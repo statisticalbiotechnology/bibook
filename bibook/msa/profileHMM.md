@@ -13,7 +13,7 @@ A multiple sequence alignment of a homologous family of protein domains reveals 
 - **Variable Positions:** Some positions exhibit near-neutral variability.
 - **Insertions and Deletions:** Insertions and deletions are tolerated at some positions more than others.
 
-A profile HMM is is a position-specific scoring model that describes which symbols are likely to be observed and how frequently insertions or deletions occur at each position (column) of a multiple sequence alignment.
+A profile HMM is a position-specific scoring model that describes which symbols are likely to be observed and how frequently insertions or deletions occur at each position (column) of a multiple sequence alignment.
 
 - **Probabilistic Basis:** HMMs have a formal probabilistic basis, allowing the use of probability theory to set and interpret the large number of free parameters in a profile, including position-specific gap and insertion parameters.
 - **Automatable Methods:** These methods are mathematically consistent and automatable, enabling the creation of libraries of hundreds of profile HMMs for large-scale genome analysis.
