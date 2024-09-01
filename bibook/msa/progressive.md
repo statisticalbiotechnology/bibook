@@ -1,6 +1,6 @@
 # Multiple Sequence Alignments
 
-## Intoduction 
+## Introduction 
 
 While pairwise alignments enable comparisons between two sequences, many biological analyses require a more comprehensive approach: the alignment of multiple sequences simultaneously. Multiple sequence alignments (MSAs) offer a holistic view of sequence similarities and differences, illuminating functional and evolutionary relationships across diverse genomes and proteomes.
 
@@ -26,11 +26,11 @@ In this chapter, we delve into the mechanics of progressive alignment, exploring
 
 ### Progressive Alignment Steps
 
-The process builds alignments in a stepwise manner, starting with the most similar sequences and gradually incorporating others. Here's a detailed look at how to create a progressive alignment. Lets assume you start with $T$ sequences, $C=\{A_1, \ldots, A_T\}$.
+The process builds alignments in a stepwise manner, starting with the most similar sequences and gradually incorporating others. Here's a detailed look at how to create a progressive alignment. Let's assume you start with $T$ sequences, $C=\{A_1, \ldots, A_T\}$.
 
 1. Compute Pairwise Alignments: Initially, calculate all pairwise alignments between each pair of sequences in $C$ using a suitable algorithm such as Needleman-Wunsch or Smith-Waterman. This provides a matrix of scores or distances that indicate how similar or different each pair of sequences is.
 
-2. Use the pairwise distances to identify the two sequences in $C$, $A_i$ and  $A_j$ that are closest (those with the highest similarity score or lowest distance), and form a alignment of those two sequences.  Remove $A_i$ and $A_j$ from $C$. We call the alignment of those two sequences $B$.
+2. Use the pairwise distances to identify the two sequences in $C$, $A_i$ and  $A_j$ that are closest (those with the highest similarity score or lowest distance), and form an alignment of those two sequences.  Remove $A_i$ and $A_j$ from $C$. We call the alignment of those two sequences $B$.
 
 3. Add $B$ to $C$. Set the distance from $B$ to each of the other sequences in $C$ to the average of their distance from $A_i$ and $A_j$.
 
@@ -69,7 +69,7 @@ Seq3 and Seq4.
 IAM-PEPPE-D
 IAMAPEPPERD
 ```
-These sequence were the most similar among remaining ones.
+These sequences were the most similar among remaining ones.
 :::
 
 :::{grid-item-card}
