@@ -119,14 +119,11 @@ BLAST comes in a couple of different versions, depending on its usage. Here are 
 
 BLAST is using FASTA format as input format for its databases and queries. The FASTA format is a widely adopted standard for representing nucleotide and protein sequences in bioinformatics. Developed in the 1980s for the FASTA sequence alignment software, it has since become a versatile and essential format for storing and sharing sequence data. The FASTA format consists of two key components:
 
-1. **Header Line:** Each sequence begins with a header line, which starts with a greater-than symbol (`>`). The text following this symbol provides a description of the sequence. This description often includes information such as a unique identifier (e.g., accession number), the source organism, and other metadata. For example:
-
-
 1. **Header Line:** Each sequence begins with a header line, which starts with a greater-than symbol (`>`). The text following this symbol provides a description of the sequence. This description often includes information such as a unique identifier (e.g., accession number), the source organism, and other metadata. For example:  
 `>sp|P12345|PROT_HUMAN Human Protein Name [Homo sapiens]`  
 In this example, "sp" indicates the Swiss-Prot database, "P12345" is the accession number, "PROT_HUMAN" is the unique identifier, and additional information follows.
 
-2. **Sequence Lines:** Below the header line, the sequence data is written as plain text. For nucleotide sequences, this consists of a string of the bases A, C, G, and T (or U for RNA). For protein sequences, it consists of a string of the standard 20 amino acid single-letter codes. The sequence can be broken into multiple lines, making it easier to read and process:
+1. **Sequence Lines:** Below the header line, the sequence data is written as plain text. For nucleotide sequences, this consists of a string of the bases A, C, G, and T (or U for RNA). For protein sequences, it consists of a string of the standard 20 amino acid single-letter codes. The sequence can be broken into multiple lines, making it easier to read and process:
 `ATGCGTACGTGACGT  
 CGTGAGCTAGTCAGT`  
 
