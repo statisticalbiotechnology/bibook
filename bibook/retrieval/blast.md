@@ -27,7 +27,7 @@ K-mers can be used for indexing sequences, making sequence retrieval more effici
 
 - **Hash Table Creation**: A hash table or other data structure can store k-mers as keys, mapping them to sequence locations.
 - **Fast Lookups**: By indexing k-mers from database sequences, BLAST can quickly look up similar k-mers from the query sequence, avoiding the need for a full pairwise alignment.
-- **Word Hits**: K-mer matches between the query and database sequences, termed "word hits," serve as initial points of comparison for BLAST.
+- **Word Hits**: K-mer matches between the query and database sequences, termed "word hits", serve as initial points of comparison for BLAST.
 
 ```{admonition} Dividing "APEPTIDE" into 3-mers
 
@@ -61,7 +61,7 @@ The Basic Local Alignment Search Tool (BLAST) is a heuristic algorithm designed 
 
 1. **Word Hits Generation**: The query sequence is divided into k-tuples, which are compared to pre-computed k-tuples from the database sequences.
   
-1. **Seeding**: The matching k-tuples, known as "seeds," are used as anchor points for the alignment procedure. The list of k-tuples is expanded to include any k-tuples that match with an alignment score above a threshold T.
+1. **Seeding**: The matching k-tuples, known as "seeds", are used as anchor points for the alignment procedure. The list of k-tuples is expanded to include any k-tuples that match with an alignment score above a threshold T.
 
 3. **Extension**: BLAST extends these seeds in both directions, creating larger alignments. This extension continues until the alignment score drops below a threshold, preventing poor alignments from extending. These extended matches are known as high-scoring segment pairs (HSPs).
 
@@ -78,7 +78,7 @@ This combined approach gives an overview of BLAST, highlighting its key features
 BLAST assesses the statistical significance of alignments using the Gumbel extreme value distribution (EVD) model. This model estimates the probability of an alignment score being due to chance. An e-value (expect value) is a statistical measure used in BLAST to assess the significance of an alignment:
 
 - **Definition**: The e-value represents the number of alignments expected to occur by chance in a database of a given size.
-- **Interpretation**: Lower e-values indicate more significant alignments. For example, an e-value of 0.01 suggests that this alignment quality would be obtained by chance 1 times out of hundred with the a query sequence of the same length of sequence and database size.
+- **Interpretation**: Lower e-values indicate more significant alignments. For example, an e-value of 0.01 suggests that this alignment quality would be obtained by chance 1 times out of hundred with a query sequence of the same length of sequence and database size.
 
 The e-values in BLAST searches provide a direct indication of alignment quality:
 
@@ -133,7 +133,7 @@ These sequence lines represent the data to be analyzed and compared.
 
 The FASTA format's simplicity and clarity make it ideal for storing and sharing sequence data. It is supported by most bioinformatics tools, including alignment algorithms, database search tools, and genome browsers. Additionally, the format is highly adaptable, allowing for easy conversion to and from other sequence formats.
 
-FASTA files can contain multiple sequences, each represented by its own header and sequence lines, making them an efficient way to store large datasets. They are used in bioinformatics pipelines, providing a way to manage and share sequence information. Note, however, that FASTA is not a well defined format, and there are multiple variant in how both headers and sequence lines should be formated.
+FASTA files can contain multiple sequences, each represented by its own header and sequence lines, making them an efficient way to store large datasets. They are used in bioinformatics pipelines, providing a way to manage and share sequence information. Note, however, that FASTA is not a well defined format, and there are multiple variants in how both headers and sequence lines should be formated.
 
 ## References
 
