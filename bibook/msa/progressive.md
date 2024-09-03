@@ -10,15 +10,15 @@ In principle, one can use dynamic programming to form MSAs. We can archive such 
 
 ### Iterative Approaches as a Practical Alternative
 
-Given the inefficiencies of dynamic programming for MSAs, bioinformaticians have turned to heuristics that mimic the behaviour of full dynamic programming. Particularly iterative approaches, such as progressive alignment. These methods simplify the alignment process by breaking it down into manageable steps. Progressive alignment, for instance, first generates a guide tree based on pairwise similarities, then iteratively aligns sequences according to the tree's order. This reduces the computational burden and allows for the processing of large datasets in a reasonable time frame.
+Given the inefficiencies of dynamic programming for MSAs, bioinformaticians have turned to heuristics that mimic the behaviour of full dynamic programming. Particularly iterative approaches, such as progressive alignment. These methods simplify the alignment process by breaking it down into manageable steps. Progressive alignment, for instance, first evaluate the pairwise similarities between the sequences by computing their pairwise alignments, then iteratively aligns sequences according to the witch sequences that are most similar. This reduces the computational burden and allows for the processing of large datasets in a reasonable time frame.
 
 ## Progressive Alignments
 
 While dynamic programming offers an optimal solution for pairwise alignments, its inefficiency for MSAs necessitates a balance between accuracy and computational efficiency. Iterative and heuristic methods like progressive alignment and consistency-based algorithms strike this balance, providing near-optimal solutions in significantly less time.
 
-A key method for constructing MSAs is progressive alignment, a stepwise approach that builds upon pairwise alignments to create a broader, more nuanced comparison. The progressive alignment method begins by generating a distance matrix, which quantifies the pairwise similarity between all sequences in the dataset. From this matrix, a guide tree is constructed, representing the evolutionary relationships inferred from the sequence similarities.
+A key method for constructing MSAs is progressive alignment, a stepwise approach that builds upon pairwise alignments to create a broader, more nuanced comparison. The progressive alignment method begins by generating a distance matrix, which quantifies the pairwise similarity between all sequences in the dataset.
 
-Progressive alignment then follows this guide tree, iteratively aligning sequences in order of their proximity on the tree. This process begins with the closest pair of sequences, which are aligned directly. Subsequent sequences are added progressively, with each new sequence being aligned to the growing consensus. This stepwise process creates an alignment that reflects both sequence similarities and evolutionary relationships.
+Progressive alignment iteratively aligning sequences in order of their proximity on the tree. This process begins with the closest pair of sequences, which are aligned directly. Subsequent sequences are added progressively, with each new sequence being aligned to the growing consensus. This stepwise process creates an alignment that reflects both sequence similarities and evolutionary relationships.
 
 The progressive alignment method offers several advantages. It efficiently handles large datasets, making it well-suited for genomics and proteomics research. By utilizing an evolutionary framework, it provides deeper insights into the conserved and divergent features of sequences, aiding in the identification of functionally important regions and evolutionary patterns.
 
