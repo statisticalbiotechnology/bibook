@@ -120,20 +120,38 @@ BLAST comes in a couple of different versions, depending on its usage. Here are 
 BLAST is using FASTA format as input format for its databases and queries. The FASTA format is a widely adopted standard for representing nucleotide and protein sequences in bioinformatics. Developed in the 1980s for the FASTA sequence alignment software, it has since become a versatile and essential format for storing and sharing sequence data. The FASTA format consists of two key components:
 
 1. **Header Line:** Each sequence begins with a header line, which starts with a greater-than symbol (`>`). The text following this symbol provides a description of the sequence. This description often includes information such as a unique identifier (e.g., accession number), the source organism, and other metadata. For example:  
-`>sp|P12345|PROT_HUMAN Human Protein Name [Homo sapiens]`  
+
+```none
+>sp|P12345|PROT_HUMAN Human Protein Name [Homo sapiens]`  
+```
+
 In this example, "sp" indicates the Swiss-Prot database, "P12345" is the accession number, "PROT_HUMAN" is the unique identifier, and additional information follows.
 
 1. **Sequence Lines:** Below the header line, the sequence data is written as plain text. For nucleotide sequences, this consists of a string of the bases A, C, G, and T (or U for RNA). For protein sequences, it consists of a string of the standard 20 amino acid single-letter codes. The sequence can be broken into multiple lines, making it easier to read and process:
-`ATGCGTACGTGACGT  
-CGTGAGCTAGTCAGT`  
+
+```none
+ATGCGTACGTGACGT  
+CGTGAGCTAGTCAGT  
+```
 
 These sequence lines represent the data to be analyzed and compared.
+
+
+Combing the two you get a fasta record e.g.  
+
+```none
+>sp|C9JLW8|MCRI1_HUMAN Mapk-regulated corepressor-interacting protein 1 OS=Homo sapiens OX=9606 GN=MCRIP1 PE=1 SV=1  
+MTSSPVSRVVYNGKRTSSPRSPPSSSEIFTPAHEENVRFIYEAWQGVERDLRGQVPGGER  
+GLVEEYVEKVPNPSLKTFKPIDLSDLKRRSTQDAKKS  
+```
 
 ### Usage and Applications
 
 The FASTA format's simplicity and clarity make it ideal for storing and sharing sequence data. It is supported by most bioinformatics tools, including alignment algorithms, database search tools, and genome browsers. Additionally, the format is highly adaptable, allowing for easy conversion to and from other sequence formats.
 
 FASTA files can contain multiple sequences, each represented by its own header and sequence lines, making them an efficient way to store large datasets. They are used in bioinformatics pipelines, providing a way to manage and share sequence information. Note, however, that FASTA is not a well defined format, and there are multiple variant in how both headers and sequence lines should be formated.
+
+You can for instance get all the cannonical amino acid sequences of the human genome as [a single FASTA file](https://rest.uniprot.org/uniprotkb/stream?compressed=true&format=fasta&query=%28proteome%3AUP000005640%29+AND+%28reviewed%3Atrue%29)
 
 ## References
 
