@@ -151,7 +151,7 @@ The FASTA format's simplicity and clarity make it ideal for storing and sharing 
 
 FASTA files can contain multiple sequences, each represented by its own header and sequence lines, making them an efficient way to store large datasets. They are used in bioinformatics pipelines, providing a way to manage and share sequence information. Note, however, that FASTA is not a well defined format, and there are multiple variant in how both headers and sequence lines should be formated.
 
-You can for instance get all the cannonical amino acid sequences of the human genome as [a single FASTA file](https://rest.uniprot.org/uniprotkb/stream?compressed=true&format=fasta&query=%28proteome%3AUP000005640%29+AND+%28reviewed%3Atrue%29)
+You can for instance get all the cannonical amino acid sequences of the human genome as [a single FASTA file](https://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/reference_proteomes/Eukaryota/UP000005640/UP000005640_9606.fasta.gz)
 
 ## References
 
