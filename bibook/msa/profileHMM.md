@@ -73,7 +73,7 @@ Consider a sequence $X = x_1, x_2, ..., x_L$ and a corresponding path $\pi = \pi
 
 ### Probability Calculation
 
-The probability of observing the sequence $X$ along the path $\pi$ through the Profile HMM is the product of all relevant emission probabilities and transition probabilities along the path. Mathematically, this is expressed as:
+In the context of Profile HMMs, we assume conditional independence of the emitted sequence given its path through the states. This means that the probability of observing a particular sequence is determined solely by the sequence of states in the HMM, independent of the emissions from other states. The probability of observing the sequence $X$ along the path $\pi$ through the Profile HMM is then becomming the product of all relevant emission probabilities and transition probabilities along the path. Mathematically, this is expressed as:
 
 $ P(X, \pi) = \prod_{i=1}^{L} e_{\pi_i}(x_i) \cdot t_{\pi_{i}, \pi_{i+1}} $
 
@@ -119,3 +119,13 @@ Given a Profile HMM and a query sequence, the Viterbi algorithm identifies the m
 
 5. **Alignment:**
    - Translate the identified path into an alignment between the query sequence and the Profile HMM, where match states represent aligned residues, insertion states represent gaps in the query sequence, and deletion states represent gaps in the model.
+
+## Comparison to MSAs
+
+### Advantages
+
+Profile HMMs provide a probabilistic framework that captures the variability and evolutionary patterns within multiple sequence alignments (MSAs), allowing for more flexible and robust sequence comparison. Unlike traditional MSAs, Profile HMMs can incorporate gap penalties and position-specific scoring, making them more suitable for handling insertions and deletions. Additionally, Profile HMMs can model the evolutionary history of sequences and predict the likelihood of a sequence being a member of a protein family, which MSAs do not inherently provide.
+
+### Disadvantages
+
+Despite their strengths, Profile HMMs have limitations. The conditional independence criterion, which assumes that the emitted sequence is independent of other emissions given the hidden state, can limit the model's ability to capture correlations between different positions in the sequence. As a result, Profile HMMs may model interdependencies between positions within a sequence. I.e. if amino acids covary between two positions in a sequence the HMM will not be able to recognize such a pattern.
