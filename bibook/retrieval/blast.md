@@ -27,7 +27,7 @@ K-mers can be used for indexing sequences, making sequence retrieval more effici
 
 - **Hash Table Creation**: A hash table or other data structure can store k-mers as keys, mapping them to sequence locations.
 - **Fast Lookups**: By indexing k-mers from database sequences, BLAST can quickly look up similar k-mers from the query sequence, avoiding the need for a full pairwise alignment.
-- **Word Hits**: K-mer matches between the query and database sequences, termed "word hits," serve as initial points of comparison for BLAST.
+- **Word Hits**: K-mer matches between the query and database sequences, termed "word hits", serve as initial points of comparison for BLAST.
 
 ```{admonition} Dividing "APEPTIDE" into 3-mers
 
@@ -61,7 +61,7 @@ The Basic Local Alignment Search Tool (BLAST) is a heuristic algorithm designed 
 
 1. **Word Hits Generation**: The query sequence is divided into k-tuples, which are compared to pre-computed k-tuples from the database sequences.
   
-1. **Seeding**: The matching k-tuples, known as "seeds," are used as anchor points for the alignment procedure. The list of k-tuples is expanded to include any k-tuples that match with an alignment score above a threshold T.
+1. **Seeding**: The matching k-tuples, known as "seeds", are used as anchor points for the alignment procedure. The list of k-tuples is expanded to include any k-tuples that match with an alignment score above a threshold T.
 
 3. **Extension**: BLAST extends these seeds in both directions, creating larger alignments. This extension continues until the alignment score drops below a threshold, preventing poor alignments from extending. These extended matches are known as high-scoring segment pairs (HSPs).
 
@@ -78,7 +78,7 @@ This combined approach gives an overview of BLAST, highlighting its key features
 BLAST assesses the statistical significance of alignments using the Gumbel extreme value distribution (EVD) model. This model estimates the probability of an alignment score being due to chance. An e-value (expect value) is a statistical measure used in BLAST to assess the significance of an alignment:
 
 - **Definition**: The e-value represents the number of alignments expected to occur by chance in a database of a given size.
-- **Interpretation**: Lower e-values indicate more significant alignments. For example, an e-value of 0.01 suggests that this alignment quality would be obtained by chance 1 times out of hundred with the a query sequence of the same length of sequence and database size.
+- **Interpretation**: Lower e-values indicate more significant alignments. For example, an e-value of 0.01 suggests that this alignment quality would be obtained by chance 1 times out of hundred with a query sequence of the same length of sequence and database size.
 
 The e-values in BLAST searches provide a direct indication of alignment quality:
 
@@ -120,20 +120,38 @@ BLAST comes in a couple of different versions, depending on its usage. Here are 
 BLAST is using FASTA format as input format for its databases and queries. The FASTA format is a widely adopted standard for representing nucleotide and protein sequences in bioinformatics. Developed in the 1980s for the FASTA sequence alignment software, it has since become a versatile and essential format for storing and sharing sequence data. The FASTA format consists of two key components:
 
 1. **Header Line:** Each sequence begins with a header line, which starts with a greater-than symbol (`>`). The text following this symbol provides a description of the sequence. This description often includes information such as a unique identifier (e.g., accession number), the source organism, and other metadata. For example:  
-`>sp|P12345|PROT_HUMAN Human Protein Name [Homo sapiens]`  
+
+```none
+>sp|P12345|PROT_HUMAN Human Protein Name [Homo sapiens]`  
+```
+
 In this example, "sp" indicates the Swiss-Prot database, "P12345" is the accession number, "PROT_HUMAN" is the unique identifier, and additional information follows.
 
 1. **Sequence Lines:** Below the header line, the sequence data is written as plain text. For nucleotide sequences, this consists of a string of the bases A, C, G, and T (or U for RNA). For protein sequences, it consists of a string of the standard 20 amino acid single-letter codes. The sequence can be broken into multiple lines, making it easier to read and process:
-`ATGCGTACGTGACGT  
-CGTGAGCTAGTCAGT`  
+
+```none
+ATGCGTACGTGACGT  
+CGTGAGCTAGTCAGT  
+```
 
 These sequence lines represent the data to be analyzed and compared.
+
+
+Combing the two you get a fasta record e.g.  
+
+```none
+>sp|C9JLW8|MCRI1_HUMAN Mapk-regulated corepressor-interacting protein 1 OS=Homo sapiens OX=9606 GN=MCRIP1 PE=1 SV=1  
+MTSSPVSRVVYNGKRTSSPRSPPSSSEIFTPAHEENVRFIYEAWQGVERDLRGQVPGGER  
+GLVEEYVEKVPNPSLKTFKPIDLSDLKRRSTQDAKKS  
+```
 
 ### Usage and Applications
 
 The FASTA format's simplicity and clarity make it ideal for storing and sharing sequence data. It is supported by most bioinformatics tools, including alignment algorithms, database search tools, and genome browsers. Additionally, the format is highly adaptable, allowing for easy conversion to and from other sequence formats.
 
-FASTA files can contain multiple sequences, each represented by its own header and sequence lines, making them an efficient way to store large datasets. They are used in bioinformatics pipelines, providing a way to manage and share sequence information. Note, however, that FASTA is not a well defined format, and there are multiple variant in how both headers and sequence lines should be formated.
+FASTA files can contain multiple sequences, each represented by its own header and sequence lines, making them an efficient way to store large datasets. They are used in bioinformatics pipelines, providing a way to manage and share sequence information. Note, however, that FASTA is not a well defined format, and there are multiple variants in how both headers and sequence lines should be formated.
+
+You can for instance get all the cannonical amino acid sequences of the human genome as [a single FASTA file](https://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/reference_proteomes/Eukaryota/UP000005640/UP000005640_9606.fasta.gz)
 
 ## References
 
