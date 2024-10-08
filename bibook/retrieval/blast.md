@@ -67,7 +67,7 @@ The Basic Local Alignment Search Tool (BLAST) is a heuristic algorithm designed 
 
 4. **Alignment Scoring**: Each extended alignment is scored based on the similarity between the aligned regions, taking into account matches, mismatches, and gaps.
 
-5. **Statistical Evaluation**: BLAST calculates the statistical significance of each alignment using e-values, indicating how many alignments of the same quality would be found by chance in a database of a given size.
+5. **Statistical Evaluation**: BLAST calculates the statistical significance of each alignment using E-values, indicating how many alignments of the same quality would be found by chance in a database of a given size.
 
 6. **Output**: The algorithm then lists all alignments above a threshold score, providing details such as alignment positions, scores, and statistical significance.
 
@@ -75,16 +75,16 @@ This combined approach gives an overview of BLAST, highlighting its key features
 
 ## E-Values and Their Meaning
 
-BLAST assesses the statistical significance of alignments using the Gumbel extreme value distribution (EVD) model. This model estimates the probability of an alignment score being due to chance. An e-value (expect value) is a statistical measure used in BLAST to assess the significance of an alignment:
+BLAST assesses the statistical significance of alignments using the Gumbel extreme value distribution (EVD) model. This model estimates the probability of an alignment score being due to chance. An E-value (expect value) is a statistical measure used in BLAST to assess the significance of an alignment:
 
-- **Definition**: The e-value represents the number of alignments expected to occur by chance in a database of a given size.
-- **Interpretation**: Lower e-values indicate more significant alignments. For example, an e-value of 0.01 suggests that this alignment quality would be obtained by chance 1 times out of hundred with a query sequence of the same length of sequence and database size.
+- **Definition**: The E-value represents the number of alignments expected to occur by chance in a database of a given size.
+- **Interpretation**: Lower E-values indicate more significant alignments. For example, an E-value of 0.01 suggests that this alignment quality would be obtained by chance 1 times out of hundred with a query sequence of the same length of sequence and database size.
 
-The e-values in BLAST searches provide a direct indication of alignment quality:
+The E-values in BLAST searches provide a direct indication of alignment quality:
 
-- **Significance Threshold**: Alignments with e-values below a certain threshold (e.g., 0.05) are considered significant, indicating a meaningful biological relationship.
+- **Significance Threshold**: Alignments with E-values below a certain threshold (e.g., 0.05) are considered significant, indicating a meaningful biological relationship.
 - **Comparison**: E-values allow for comparing the statistical significance of different alignments, making them a valuable metric for researchers.
-- **Database Size Influence**: The size of the database affects e-values, as larger databases increase the likelihood of chance alignments, resulting in higher e-values.
+- **Database Size Influence**: The size of the database affects E-values, as larger databases increase the likelihood of chance alignments, resulting in higher E-values.
 
 ## How is the BLAST E-value Calculated?
 
