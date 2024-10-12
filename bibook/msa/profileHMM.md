@@ -73,11 +73,11 @@ Consider a sequence $X = x_1, x_2, ..., x_L$ and a corresponding path $\pi = \pi
 
 ### Probability Calculation
 
-In the context of Profile HMMs, we assume conditional independence of the emitted sequence given its path through the states. This means that the probability of observing a particular sequence is determined solely by the sequence of states in the HMM, independent of the emissions from other states. The probability of observing the sequence $X$ along the path $\pi$ through the Profile HMM is then becomming the product of all relevant emission probabilities and transition probabilities along the path. Mathematically, this is expressed as:
+For Profile HMMs, just as other HMMs, we assume conditional independence of the emitted sequence given its path through the states. This means that the probability of observing a particular sequence is determined solely by the sequence of states in the HMM, independent of the emissions from other states. The probability of observing the sequence $X$ along the path $\pi$ through the Profile HMM is then becomming the product of all relevant emission probabilities and transition probabilities along the path. Mathematically, this is expressed as:
 
 $ P(X, \pi) = \prod_{i=1}^{L} e_{\pi_i}(x_i) \cdot t_{\pi_{i}, \pi_{i+1}} $
 
-Here, $e_{ \pi_i}(x_i) $ represents the emission probability of observing symbol $x_i$ from state $\pi_i$, and $ t_{\pi_{i}, \pi_{i+1}} $ is the transition probability from state $\pi_i$ to state $\pi_{i+1}$. It's important to note that the emission probability of a deletion state is always 1 since deletions do not emit any symbols.
+Here, $e_{ \pi_i}(x_i) $ represents the emission probability of observing symbol $x_i$ from state $\pi_i$, and $ t_{\pi_{i}, \pi_{i+1}} $ is the transition probability from state $\pi_i$ to state $\pi_{i+1}$. It's important to note that the emission probability of a deletion state is always $1$ since deletions do not emit any symbols, and hence emits "no symbol" with a probability of $1$.
 
 #### Step-by-Step Breakdown
 
@@ -91,7 +91,7 @@ Here, $e_{ \pi_i}(x_i) $ represents the emission probability of observing symbol
 
 ## Sequence Alignment with Profile HMMs using Viterbi Algorithm
 
-However, normally we don't have a path available that likely generated a certain sequence. However, it turns out that we can use dynamic programming to find an optimal path.
+When we want to score a sequence with a profile HMM, we normally don't have a path available that likely generated a certain sequence. However, it turns out that we can use dynamic programming to find an optimal path.
 This is done using the Viterbi algorithm, adapted for Profile Hidden Markov Models (Profile HMMs). Here's a concise breakdown of the process:
 
 ### Overview:
