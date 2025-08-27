@@ -10,8 +10,6 @@ Sequence alignments are indispensable tools that not only advance fundamental sc
 
 ## What is a Sequence Alignment?
 
-### Definition of an Alignment
-
 Sequence alignment is a method of arranging sequences of DNA, RNA, or proteins to identify regions of similarity that may be a consequence of functional, structural, or evolutionary relationships between the sequences. By comparing these sequences, alignments can reveal patterns that are not evident when analyzing single sequences in isolation.
 
 ### Importance of Sequence Alignments
