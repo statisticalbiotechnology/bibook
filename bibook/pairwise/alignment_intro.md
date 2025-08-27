@@ -1,6 +1,6 @@
 # Introduction to Sequence Alignments
 
-Sequence alignments form the cornerstone of all bioinformatics. It is just a slight stretch to claim that bioinformatics is the science of sequence alignments. Sequence alignment is the comparison of nucleotide or protein sequences to identify regions of similarity that may reveal functional, structural, or evolutionary relationships. This foundational technique has propelled our understanding of molecular biology, enabling the prediction of gene functions, the elucidation of evolutionary trajectories, and the bering principle behind modern sequencing.
+Sequence alignments form the cornerstone of all bioinformatics. It is just a slight stretch to claim that bioinformatics is the science of sequence alignments. Sequence alignment is the comparison of nucleotide or protein sequences to identify regions of similarity that may reveal functional, structural, or evolutionary relationships. This foundational technique has propelled our understanding of molecular biology, enabling the prediction of gene functions, the elucidation of evolutionary trajectories, and the bearing principle behind modern sequencing.
 
 Sequence alignments serve as a bridge between raw genetic information and meaningful biological insights. They facilitate the comparison of newly sequenced genes or proteins against well-characterized databases, providing immediate context and understanding. Through these comparisons, researchers can infer the biological role of unknown genes, identify conserved domains crucial for protein function, and predict the evolutionary lineage of species.
 
@@ -18,11 +18,11 @@ Sequence alignment is a method of arranging sequences of DNA, RNA, or proteins t
 
 Sequence alignments are invaluable in the study of biological sciences for several reasons:
 
-- **Localization of Equivalent Regions:** Alignments allow scientists to identify corresponding regions among two or more sequences. This is crucial for understanding the conserved areas that may indicate important functional or structural parts of the sequence, such as active sites in enzymes or binding sites in proteins.
+- **Localization of Equivalent Regions:** Alignments allow scientists to identify corresponding regions among two or more sequences. This helps reveal conserved regions that often correspond to essential functional or structural elements, such as enzyme active sites or protein binding regions.
 
 - **Quantification of Sequence Similarity:** Through alignments, it is possible to quantitatively measure how similar two or more sequences are. This similarity can be indicative of how closely related the sequences are in an evolutionary context, providing insights into the phylogenetic relationships between different organisms.
 
-Understanding sequence alignments is crucial for students entering the field of biotechnology, as it lays the foundation for more advanced studies in modern sequencing and proteomics and in that capacity being fundamental for genetics, molecular biology, and evolutionary studies. It is just a sligh exaggeration to say that alignments are part of every aspect of modern biology.
+Understanding sequence alignments is crucial for students entering the field of biotechnology, as it lays the foundation for more advanced studies in modern sequencing and proteomics and in that capacity being fundamental for genetics, molecular biology, and evolutionary studies. In fact, alignments underpin nearly every aspect of modern biology.
 
 ### Illustration of a Sequence Alignment
 
@@ -51,7 +51,7 @@ To systematically construct a pairwise alignment we need three things.
 
 ### Scoring function
 
-A scoring function, $d(x,y)$, giving the score of a column of any letter $x$ and $y$.  The letters could be DNA or RNA bases of amino acids, for know lets think about them as DNA bases. A typical scoring function could be:
+A scoring function, $d(x,y)$, giving the score of a column of any characters $x$ and $y$.  The characters could be DNA or RNA bases of amino acids, for now, let’s think about them as DNA bases. A typical scoring function could be:
 
 $$  
 d(x,y)= 
@@ -187,7 +187,7 @@ Each alignment approach serves different purposes and is suited to particular sc
 
 ## Alignment Algorithm
 
-Given the scoring function and alignment type, we have a definition of what we want to archive, i.e., there is a definition of optimality. Now we come to the question of *how* we obtain such optimality.
+Given the scoring function and alignment type, we have a definition of what we want to achieve, i.e., there is a definition of optimality. Now we come to the question of *how* we obtain such optimality.
 
 ### Exhaustive searches
 
@@ -215,4 +215,26 @@ Each step in a dynamic programming approach to sequence alignment treats the cal
 
 Dynamic programming thus allows bioinformatics algorithms to compute sequence alignments rapidly and efficiently, avoiding the computational infeasibility associated with an exhaustive search. This method ensures that each step is self-contained, using only the necessary data from directly related subproblems, thereby dramatically reducing the computational complexity and resource requirements.
 
-In the next Chapters we will describe a set of such dynamic programming algorithms in detail.
+In the next chapters we will describe a set of such dynamic programming algorithms in detail, here is table summarizing them.
+
+```{list-table} Sequence alignment types
+:header-rows: 1
+
+* - Alignment Type
+  - Definition
+  - Typical Use Case
+  - Algorithm
+* - **Global**
+  - Aligns full length of both sequences
+  - Closely related sequences of similar length
+  - [Needleman–Wunsch](needleman)
+* - **Local**
+  - Aligns subsequences with highest similarity
+  - Motif/domain detection, different-length sequences
+  - [Smith–Waterman](waterman)
+* - **Semi-global**
+  - Aligns one sequence entirely, allows overhangs in the other
+  - Gene-to-genome, substring matching
+  - [Variants of Needleman–Wunsch](semi)
+``` 
+
