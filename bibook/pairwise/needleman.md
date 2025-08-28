@@ -65,7 +65,7 @@ We start by filling in the borders of the matrix using the Equation {eq}`nw-init
 :align: left
 :width: 50%
 
-Initialization of the gap penalty matrix for the Needleman-Wunsch algorithm, using using Equation {eq}`nw-init`.
+Initialization of the gap penalty matrix for the Needleman-Wunsch algorithm, using Equation {eq}`nw-init`.
 ```
 
 We then recursively fill in the other elements of the matrix in a row wise manner using Equation {eq}`nw-recursion`, as shown in {numref}`fig-nw-recursion`.
@@ -96,7 +96,7 @@ Given the filled in matrix, we can now track the optimal path from the bottom ri
 :align: left
 :width: 50%
 
-We follow the alignment backwards from the bottom-right corner to the top-left corner of the matrix, and mark the found optimal path with blue arrows.
+We trace the alignment backwards from the bottom-right corner to the top-left corner of the matrix, and mark the found optimal path with blue arrows.
 ```
 
 ### Example 2: Longer sequences
@@ -118,7 +118,7 @@ We follow the alignment backwards from the bottom-right corner to the top-left c
 ````{exercise} Needleman-Wunsch Alignment 1
 :label: ex-nwexe1
 
-Calculate the Needleman Wunch Alignment of th following two sequences:
+Calculate the Needleman Wunsch Alignment of the following two sequences:
 
 ```
 GATTA  
@@ -133,7 +133,7 @@ Use the following scoring scheme:
 ```{dropdown} **Reveal Answer**
 ```{figure} ./img/nw_exe1.png
 ---
-scale: 50%
+width: 50%
 align: left
 ---
 ```
