@@ -80,3 +80,16 @@ G-CTACTA
 ```
 ````
 
+## Why Matrix Representations Are Useful
+
+Matrices are more than just a convenient way to visualize alignments — they form the mathematical foundation that allows us to apply efficient algorithms. The key property that makes them powerful is that they provide a **structured way to exploit the principle of optimal substructure**.
+
+### Optimal Substructure in Alignments
+
+When aligning two sequences, the score of the *best alignment* up to a given position $(i,j)$ depends only on:
+- the characters $a_i$ and $b_j$, and  
+- the best scores of alignments leading into that position (from $(i-1,j-1)$, $(i-1,j)$, or $(i,j-1)$).  
+
+This means that once we have computed the optimal score up to $(i,j)$, we no longer need to remember *how* we reached that point. The matrix cell itself summarizes all relevant information about the past.
+
+In other words, **any optimal scoring pathway of the subsequent part of the alignment is independent of the specific choices made earlier**. This independence allows us to build solutions incrementally, storing partial results in the matrix and avoiding redundant computations.
