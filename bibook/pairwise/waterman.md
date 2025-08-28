@@ -57,10 +57,10 @@ We start by filling in the borders of the matrix using Equation {eq}`sw-init`, a
 :align: left
 :width: 50%
 
-Initialization of the dynamic programming matrix, using using Equation {eq}`sw-init`. For Smith-Waterman this equates to setting the elements of the first row and column to 0.
+Initialization of the dynamic programming matrix, using Equation {eq}`sw-init`. For Smith-Waterman this equates to setting the elements of the first row and column to 0.
 ```
 
-We then recusively fill in the other elements of the matrix in a row wise manner using Equation {eq}`sw-recursion`, as shown in {numref}`fig-sw-fill`.
+We then recursively fill in the other elements of the matrix in a row wise manner using Equation {eq}`sw-recursion`, as shown in {numref}`fig-sw-fill`.
 
 ```{figure} ./img/sw_short_fill.png
 :name: fig-sw-fill
@@ -77,7 +77,7 @@ Given the filled in matrix, we can now track the optimal path from the bottom ri
 :align: left
 :width: 50%
 
-We follow the alignment backwards from the matrix element with the largest value, $\max_{i,j} S_{ij}$, to the first encountered cell with a value of zero, and mark the found optimal path with blue arrows.
+We follow the alignment backwards from the matrix element with the largest value, $\max_{i,j} S_{ij}$, to the first encountered cell with a value of zero where we stop, and mark the found optimal path with blue arrows.
 ```
 
 ### Exercises 
@@ -100,7 +100,7 @@ Use the following scoring scheme:
 ```{dropdown} **Reveal Answer**
 ```{figure} ./img/sw_exe1.png
 ---
-scale: 50%
+width: 50%
 align: left
 ---
 ```
@@ -124,7 +124,7 @@ Use the following scoring scheme:
 ```{dropdown} **Reveal Answer**
 ```{figure} ./img/sw_exe2.png
 ---
-scale: 50%
+width: 90%
 align: left
 ---
 ```

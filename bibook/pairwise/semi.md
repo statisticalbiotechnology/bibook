@@ -7,7 +7,7 @@ We also have a third type of alignments, semi-global alignments, which are also 
 
 ## Principle
 
-Here we cross breed the Needleman-Wunch and the Smith-Waterman algorithm, by initiating the dynamic programming matrix as for a local aligment, but using the same recursion as in the global alignment. 
+Here we cross breed the Needleman-Wunsch and the Smith-Waterman algorithm, by initiating the dynamic programming matrix as for a local alignment, but using the same recursion as in the global alignment. 
 
 ## Implementation
 
