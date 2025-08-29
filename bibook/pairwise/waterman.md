@@ -7,7 +7,7 @@ Developed by Temple F. Smith and Michael S. Waterman in 1981, the Smith-Waterman
 
 ## Principle
 
-The Smith-Waterman algorithm employs dynamic programming to construct an alignment matrix that scores local alignments between two sequences. It initializes the matrix and fills it based on match, mismatch, and gap penalties, iteratively computing the highest possible score for any contiguous alignment segment.
+The Smith-Waterman algorithm employs dynamic programming to construct an alignment matrix that scores local alignments between two sequences. It initializes the matrix and fills it based on match, mismatch, and gap penalties, iteratively computing the highest possible score for any contiguous alignment segment. This means that our alignment can start and end at any position in the sequences, focusing on the most similar regions rather than aligning the entire length of both sequences. This is obtained by reseting the score to zero if we get a negative score.
 
 ## Implementation
 
