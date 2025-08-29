@@ -6,7 +6,7 @@ Developed by Saul B. Needleman and Christian D. Wunsch in 1970 {cite}`needleman1
 
 ## Principle
 
-The algorithm is based on dynamic programming, a method that breaks down complex problems into simpler, smaller subproblems, solving each just once and storing their solutions. In the context of sequence alignment, it constructs an optimal global alignment by comparing every character of one sequence with every character of another, considering the costs of matches, mismatches, and gaps.
+The algorithm is based on dynamic programming, a method that breaks down complex problems into simpler, smaller subproblems, solving each just once and storing their solutions. In the context of sequence alignment, it constructs an optimal global alignment by comparing every character of one sequence with every character of another, considering the costs of matches, mismatches, and gaps. The logic is that we build up an alignment one position at a time, using previously computed optimal alignments. We begin in the top left corner of the matrix representation of the alignment, where we still have not aligned any characters, and hence a score of zero. We then proceed to fill in the matrix, one cell at a time, until we reach the bottom right corner, which contains the score of the optimal alignment. 
 
 ## The definitions of the problem, and the solution
 
