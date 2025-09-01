@@ -70,7 +70,7 @@ We then recursively fill in the other elements of the matrix in a row wise manne
 Filling in the matrix. We fill in the elements recursively, in a row-wise manner. Each cell's value is evaluated using Equation {eq}`sw-recursion`. We store trackers of which step we used to reach a certain cell, indicated by red arrows. Note that for some cells there are multiple optimal steps, i.e. paths that have the same score.
 ```
 
-Given the filled in matrix, we can now track the optimal path from the bottom right element of the matrix, following the arrows back to the top-left element, as shown in {numref}`fig-sw-bt`.
+Given the filled in matrix, we can now track the optimal path from the maximal element of the matrix, following the arrows back to the first element in the path with a score of zero, as shown in {numref}`fig-sw-bt`.
 
 ```{figure} ./img/sw_short_bt.png
 :name: fig-sw-bt
