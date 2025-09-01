@@ -16,7 +16,7 @@ Given the inefficiency of dynamic programming for MSAs, bioinformaticians have t
 
 While dynamic programming offers an optimal solution for pairwise alignments, its inefficiency for MSAs necessitates a balance between accuracy and computational efficiency. Iterative and heuristic methods like progressive alignment and consistency-based algorithms strike this balance, providing near-optimal solutions in significantly less time.
 
-A key method for constructing MSAs is progressive alignment, a stepwise approach that builds upon pairwise alignments to create a broader, more nuanced comparison. The progressive alignment method begins by generating a distance matrix, which quantifies the pairwise similarity between all sequences in the dataset.
+A key method for constructing MSAs is progressive alignment, a stepwise approach that builds upon pairwise alignments to create a broader, more nuanced comparison. The progressive alignment method begins by generating a similarity matrix (or distance matrix if we instead quantify how different the sequences are), which quantifies the pairwise similarity between all sequences in the dataset.
 
 Progressive alignment iteratively aligns sequences in order of their proximity on the tree. This process begins with the closest pair of sequences, which are aligned directly. Subsequent sequences are added progressively, with each new sequence being aligned to the growing consensus. This stepwise process creates an alignment that reflects both sequence similarities and evolutionary relationships.
 
@@ -32,7 +32,7 @@ The process builds alignments in a stepwise manner, starting with the most simil
 
 2. Use the pairwise distances to identify the two sequences in $C$, $A_i$ and $A_j$, that are closest (those with the highest similarity score or lowest distance), and form an alignment of those two sequences. Remove $A_i$ and $A_j$ from $C$. We call the alignment of those two sequences $B$.
 
-3. Add $B$ to $C$. Set the distance from $B$ to each of the other sequences in $C$ to the average of their distances from $A_i$ and $A_j$.
+3. Add $B$ to $C$. Set the score or distance from $B$ to each of the other sequences in $C$ to the average of their scores or distances from $A_i$ and $A_j$.
 
 4. If there is more than one sequence left in $C$, repeat from step 2.
 
