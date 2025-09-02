@@ -96,29 +96,51 @@ This is done using the Viterbi algorithm, adapted for Profile Hidden Markov Mode
 
 ### Overview:
 
-Given a Profile HMM and a query sequence, the Viterbi algorithm identifies the most probable alignment between the sequence and the model. This alignment accounts for matches, insertions, and deletions.
+Given a Profile HMM and a query sequence, the Viterbi algorithm identifies the most probable alignment between the sequence and the model. This alignment accounts for matches, insertions, and deletions. The algorithm computes a dynamic programming matrix $V(i,j)$, where each entry represents the probability of the most likely path that aligns the first $i$ residues of the sequence to state $j$ of the HMM.
 
 #### Steps:
 
 1. **Initialization:**
-   - Initialize the first column of the Viterbi matrix with the emission probabilities for the first residue of the sequence in each match state.
-   - The formula for initialization:
-     $ V(0, 0) = 1.0 $
+
+   * Initialize the first column of the Viterbi matrix with probabilities for starting in the appropriate states.
+   * For the start state:
+
+     $$
+     V(0,0) = 1.0
+     $$
+
+     meaning that before reading any residues, the probability of being in the start state is 1.
 
 2. **Recursion:**
-   - Iterate through each residue in the sequence, updating the Viterbi matrix based on transition and emission probabilities.
-   - Update each cell in the Viterbi matrix using the following formula:
-     $ V(i, j) = \max_{k \le j} [V(i-1, k) \cdot t_{kj}] \cdot e_j(x_i), $ when $j$ is a match or insert state. 
-     $ V(i, j) = \max_{k<j} [V(i, k) \cdot t_{kj}], $  when $j$ is a delete state.
+
+   * Iterate through each residue in the sequence, updating the Viterbi matrix based on transition and emission probabilities.
+   * Update each cell in the Viterbi matrix using the following formula:
+
+     $$
+     V(i, j) = \max_{k \le j} [V(i-1, k) \cdot t_{kj}] \cdot e_j(x_i), 
+     \] when \(j\) is a match or insert state.  
+     \[
+     V(i, j) = \max_{k<j} [V(i, k) \cdot t_{kj}], 
+     \] when \(j\) is a delete state.
+
+     $$
 
 3. **Termination:**
-   - Once the entire sequence has been processed, identify the highest probability in the last column of the Viterbi matrix. This represents the likelihood of the most probable path through the model.
+
+   * Once the entire sequence has been processed, identify the highest probability in the last column of the Viterbi matrix. This represents the likelihood of the most probable path through the model.
 
 4. **Backtracking:**
-   - Trace back through the Viterbi matrix, starting from the cell with the highest probability in the last column. Record the path through the model that corresponds to this maximum probability.
 
-5. **Alignment:**
-   - Translate the identified path into an alignment between the query sequence and the Profile HMM, where match states represent aligned residues, insertion states represent gaps in the query sequence, and deletion states represent gaps in the model.
+   * Trace back through the Viterbi matrix, starting from the cell with the highest probability in the last column. Record the path through the model that corresponds to this maximum probability.
+
+5. **Alignment and Scoring:**
+
+   * Translate the identified path into an alignment between the query sequence and the Profile HMM. Match states represent aligned residues, insertion states represent residues not accounted for in the model, and deletion states represent gaps in the sequence.
+   * The Viterbi score for the sequence is simply the probability of this optimal path. This provides a quantitative measure of how well the sequence fits the model.
+
+### Using Viterbi for Sequence Classification
+
+The Viterbi algorithm is not only useful for aligning a sequence to a single Profile HMM, but also for **scoring new sequences against entire libraries of HMMs**. For example, the [Pfam](http://pfam.xfam.org/) database contains thousands of curated profile HMMs representing protein domains. By scoring a new sequence against all models in Pfam, one can identify which domain families are present and classify the sequence accordingly.
 
 ## Comparison to MSAs
 
