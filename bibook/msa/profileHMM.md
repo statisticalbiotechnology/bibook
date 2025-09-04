@@ -116,14 +116,10 @@ Given a Profile HMM and a query sequence, the Viterbi algorithm identifies the m
    * Iterate through each residue in the sequence, updating the Viterbi matrix based on transition and emission probabilities.
    * Update each cell in the Viterbi matrix using the following formula:
 
-     $$
-     V(i, j) = \max_{k \le j} [V(i-1, k) \cdot t_{kj}] \cdot e_j(x_i), 
-     \] when \(j\) is a match or insert state.  
-     \[
-     V(i, j) = \max_{k<j} [V(i, k) \cdot t_{kj}], 
-     \] when \(j\) is a delete state.
+     
+     $V(i, j) = \max_{k \le j} [V(i-1, k) \cdot t_{kj}] \cdot e_j(x_i),$  when $j$ is a match or insert state.  
+     $V(i, j) = \max_{k<j} [V(i, k) \cdot t_{kj}],$ when $j$ is a delete state.
 
-     $$
 
 3. **Termination:**
 
