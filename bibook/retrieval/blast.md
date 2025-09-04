@@ -102,6 +102,27 @@ Where:
 
 The E-value is directly proportional to the search space size (m × n) and inversely proportional to the exponential function of the alignment score (S). Consequently, larger databases provide more opportunities for chance alignments, resulting in higher E-values (indicating weaker statistical significance) for the same level of sequence similarity.
 
+## How Are $K$ and $\lambda$ Obtained?
+
+When BLAST was first developed, the parameters $K$ and $\lambda$ were estimated by aligning large numbers of randomized sequences with the same background composition as the database. The distribution of alignment scores from these random comparisons follows an extreme value distribution (EVD), as predicted by Karlin–Altschul theory. By fitting the empirical score distribution to the EVD, appropriate values of $K$ and $\lambda$ were obtained for each scoring matrix and residue composition.
+
+Formally, $\lambda$ is defined as the unique positive solution to the equation
+
+$$
+\sum_{i,j} p_i q_j e^{\lambda s_{ij}} = 1,
+$$
+
+where $s_{ij}$ is the substitution score for aligning residues $i$ and $j$, and $p_i$, $q_j$ are their background frequencies. Once $\lambda$ is determined, $K$ is fitted so that the theoretical distribution
+
+$$
+P(S \geq x) \approx 1 - \exp\!\big(-K m n e^{-\lambda x}\big)
+$$
+
+matches the observed distribution of random alignment scores.
+
+Today, BLAST does not generate random sequences for each search. Instead, it uses lookup tables of pre-computed values for $K$ and $\lambda$, derived from these earlier large-scale calibrations. For standard scoring matrices (e.g. BLOSUM62, PAM250) and typical residue frequencies, these values are stable and can be reused. In addition, BLAST may apply composition-based adjustments if the query or database composition deviates significantly from the assumptions used in the pre-computed tables.
+
+
 ## Types of BLAST
 
 BLAST comes in a couple of different versions, depending on its usage. Here are the main versions of BLAST:
