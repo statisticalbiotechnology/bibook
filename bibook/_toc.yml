@@ -14,7 +14,7 @@ parts:
     numbered: True
     chapters:
     - file: pairwise/needleman
-    - file: pairwise/nw_code.ipynb
+    - file: pairwise/nw_code.md
     - file: pairwise/waterman
     - file: pairwise/sw_code.ipynb
     - file: pairwise/semi
