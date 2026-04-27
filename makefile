@@ -15,7 +15,7 @@ imgs:
 	@$(MAKE) -C bibook/msa/img
 
 build-book: imgs
-	$(CONDA_ACTIVATE) jb; cd $(BOOK_DIR) && jupyter book build
+	$(CONDA_ACTIVATE) jb; cd $(BOOK_DIR) && jupyter book build --html
 
 # Step 1: Build the book with Jupyter Book using the LaTeX builder
 $(BUILD_DIR):

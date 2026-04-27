@@ -35,7 +35,7 @@ jobs:
     # Build the book (must run from inside the bibook/ subdirectory)
     - name: Build the book
       run: |
-        cd bibook && jupyter book build
+        cd bibook && jupyter book build --html
 
     # Upload the book's HTML as an artifact
     - name: Upload artifact
