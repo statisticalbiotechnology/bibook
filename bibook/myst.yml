@@ -1,0 +1,51 @@
+version: 1
+project:
+  title: Bioinformatics for Biotechnology Students
+  authors:
+    - name: Lukas Käll
+  github: statisticalbiotechnology/bibook
+  thebe:
+    binder:
+      repo: statisticalbiotechnology/bibook
+      provider: github
+      url: https://mybinder.org
+      ref: main
+  bibliography:
+    - references.bib
+  exports:
+    - format: pdf
+      template: plain_latex_book
+      output: exports/bibook.pdf
+  toc:
+    - file: intro.md
+    - title: Introduction to Alignments
+      children:
+        - file: pairwise/alignment_intro.md
+        - file: pairwise/alignment_algorithm.md
+    - title: Algorithms for Pairwise Alignments
+      children:
+        - file: pairwise/needleman.md
+        - file: pairwise/nw_code.md
+        - file: pairwise/waterman.md
+        - file: pairwise/sw_code.ipynb
+        - file: pairwise/semi.md
+        - file: pairwise/sg_code.ipynb
+    - title: Protein Sequence Alignment
+      children:
+        - file: protein/matrix.ipynb
+        - file: protein/prot_code.ipynb
+    - title: Multiple Sequence Alignments
+      children:
+        - file: msa/progressive.md
+        - file: msa/msa.ipynb
+        - file: msa/profileHMM.md
+        - file: msa/viterbi.ipynb
+    - title: Sequence Retrieval
+      children:
+        - file: retrieval/blast.md
+        - file: retrieval/blast_code.ipynb
+site:
+  options:
+    logo: bibook.webp
+    folders: true
+  template: book-theme

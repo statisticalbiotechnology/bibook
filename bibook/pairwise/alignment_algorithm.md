@@ -16,7 +16,7 @@ A matrix for sequence alignment is essentially a grid. Each cell in this grid re
 ```{figure} ./img/movement.png
 ---
 name: fig-movement
-scale: 50 %
+width: 50%
 alt: One step of an alignment
 ---
 A step in the path representing an alignment.
@@ -37,7 +37,7 @@ An example of some matrix representations of an alignment is found in {numref}`f
 ```{figure} ./img/matrix_representation.png
 ---
 name: fig-matrix-representation
-scale: 50 %
+width: 50%
 alt: Matrix representation of three alignments
 ---
 Matrix representation of three full length alignments of `ACGTACT` and `ACTACGT`, as well as one partial alignment of the same sequences.
@@ -65,7 +65,7 @@ The matrix representation of alignments and the traceback process are not merely
 ```{figure} ./img/matrix_representation_exer.png
 ---
 name: fig-matrix-representation-exer
-scale: 50 %
+width: 50%
 alt: Exercise on Matrix representation of alignments
 ---
 

@@ -1,0 +1,15 @@
+# See docs at: https://mystmd.org/guide/frontmatter
+version: 1
+project:
+  id: 0aec75b3-947c-4a7e-9c1c-3fa921bb594a
+  # title:
+  # description:
+  # keywords: []
+  # authors: []
+  github: https://github.com/statisticalbiotechnology/bibook
+  # To autogenerate a Table of Contents, run "jupyter book init --write-toc"
+site:
+  template: book-theme
+  # options:
+  #   favicon: favicon.ico
+  #   logo: site_logo.png

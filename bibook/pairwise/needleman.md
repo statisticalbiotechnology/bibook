@@ -68,26 +68,69 @@ We start by filling in the borders of the matrix using the Equation {eq}`nw-init
 Initialization of the gap penalty matrix for the Needleman-Wunsch algorithm, using Equation {eq}`nw-init`.
 ```
 
-We then recursively fill in the other elements of the matrix in a row wise manner using Equation {eq}`nw-recursion`, as shown in {numref}`fig-nw-recursion`.
+We then recursively fill in the other elements of the matrix in a row wise manner using Equation {eq}`nw-recursion`, as shown in {ref}`fig-nw-recursion`.
 
-:::{subfigure} ABC|DEF|GHI
-    :subcaptions: below
-    :align: left
-    :name: fig-nw-recursion
-    :class-grid: outline
+(fig-nw-recursion)=
+**Filling in the NW matrix**
 
+::::{grid} 3
+
+:::{grid-item}
 ![max(0+-1,-1+-1,-1+-1)=-1](./img/nw_short_2.png)
+
+max(0+-1,-1+-1,-1+-1)=-1
+:::
+
+:::{grid-item}
 ![max(-1+-1,-2+-1,-1+-1)=-2](./img/nw_short_3.png)
+
+max(-1+-1,-2+-1,-1+-1)=-2
+:::
+
+:::{grid-item}
 ![max(-2+1,-3+-1,-2+-1)=-1](./img/nw_short_4.png)
+
+max(-2+1,-3+-1,-2+-1)=-1
+:::
+
+:::{grid-item}
 ![max(-1+1,-1+-1,-2+-1)=0](./img/nw_short_5.png)
+
+max(-1+1,-1+-1,-2+-1)=0
+:::
+
+:::{grid-item}
 ![max(-1+-1,-2+-1,0+-1)=-1](./img/nw_short_6.png)
+
+max(-1+-1,-2+-1,0+-1)=-1
+:::
+
+:::{grid-item}
 ![max(-2+-1,-1+-1,-1+-1)=-2](./img/nw_short_7.png)
+
+max(-2+-1,-1+-1,-1+-1)=-2
+:::
+
+:::{grid-item}
 ![max(-2+-1,0+-1,-3+-1)=-1](./img/nw_short_8.png)
+
+max(-2+-1,0+-1,-3+-1)=-1
+:::
+
+:::{grid-item}
 ![max(0+1,-1+-1,-1+-1)=1](./img/nw_short_9.png)
+
+max(0+1,-1+-1,-1+-1)=1
+:::
+
+:::{grid-item}
 ![max(-1+-1,-2+-1,1+-1)=0](./img/nw_short_10.png)
 
-Filling in the matrix. We fill in the elements recursively, in a row-wise manner. Each cell's value is evaluated using Equation {eq}`nw-recursion`. The values of each recursion is spelled out under each subfigure. We store trackers of which step we used to reach a certain cell, indicated by red arrows. Note that for some cells there are multiple optimal steps, i.e. paths that have the same score.
-:::  
+max(-1+-1,-2+-1,1+-1)=0
+:::
+::::
+
+We fill in the elements recursively, in a row-wise manner. Each cell's value is evaluated using Equation {eq}`nw-recursion`. The values of each recursion is spelled out under each image. We store trackers of which step we used to reach a certain cell, indicated by red arrows. Note that for some cells there are multiple optimal steps, i.e. paths that have the same score.
 
 Given the filled in matrix, we can now track the optimal path from the bottom right element of the matrix, following the arrows back to the top-left element, as shown in {numref}`fig-nw-bt`.
 
@@ -157,7 +200,7 @@ Use the following scoring scheme:
 ```{dropdown} **Reveal Answer**
 ```{figure} ./img/nw_exe2.png
 ---
-scale: 50%
+width: 50%
 align: left
 ---
 ```

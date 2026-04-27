@@ -2,7 +2,7 @@
 
 We will now make use of our definitions of a Needleman-Wunsch alignment to see how the algorithm transforms to actual code. The sections below will walk you through how this is done. 
 
-````{toggle} Service functions for formatting and printing alignments
+````{dropdown} Service functions for formatting and printing alignments
 To facilitate the the reasoning in the subsequent cells, we first we define a couple of service functions that we will need later, for formating and printing alignments. It is not important that you understand what these functions do, for now.
 
 ```python

@@ -39,8 +39,6 @@ The process builds alignments in a stepwise manner, starting with the most simil
 ### Progressive Alignment Example
 
 ::::{grid} 2 2 4 4
-:class-container: text-center
-:gutter: 1
 
 :::{grid-item-card}
 Input sequences

@@ -4,7 +4,7 @@ SHELL = /bin/bash
 CONDA_ACTIVATE=source $$(conda info --base)/etc/profile.d/conda.sh ; conda activate ; conda activate
 # Variables
 BOOK_DIR=bibook
-BUILD_DIR=$(BOOK_DIR)/_build/latex
+BUILD_DIR=$(BOOK_DIR)/exports
 TEX_FILE=$(BUILD_DIR)/bibook.tex
 PDF_FILE=$(BUILD_DIR)/bibook.pdf
 
@@ -12,14 +12,14 @@ PDF_FILE=$(BUILD_DIR)/bibook.pdf
 all: build-book $(PDF_FILE)
 
 imgs:
-	@$(MAKE) -C bibook/msa/img 
+	@$(MAKE) -C bibook/msa/img
 
 build-book: imgs
-	$(CONDA_ACTIVATE) jb; jupyter-book build bibook/
+	$(CONDA_ACTIVATE) jb; cd $(BOOK_DIR) && jupyter book build
 
 # Step 1: Build the book with Jupyter Book using the LaTeX builder
 $(BUILD_DIR):
-	jupyter-book build --builder latex $(BOOK_DIR)
+	cd $(BOOK_DIR) && jupyter book build --tex
 
 # Step 2: Replace all occurrences of "align*" with "aligned" in bibook.tex
 $(TEX_FILE): $(BUILD_DIR)
@@ -31,11 +31,11 @@ $(PDF_FILE): $(TEX_FILE)
 
 # Clean up build files
 clean:
-	cd $(BUILD_DIR) && latexmk -c
+	cd $(BOOK_DIR) && jupyter book clean
 
 # Clean up everything including the PDF
 clean-all:
-	cd $(BUILD_DIR) && latexmk -C && rm -f $(PDF_FILE)
+	cd $(BOOK_DIR) && jupyter book clean && rm -rf exports/
 
 .PHONY: all clean clean-all
 
