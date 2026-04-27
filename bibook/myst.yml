@@ -38,7 +38,7 @@ project:
       children:
         - file: msa/progressive.md
         - file: msa/msa.ipynb
-        - file: msa/seqlogo.md
+        - file: msa/seqlogo.ipynb
         - file: msa/profileHMM.md
         - file: msa/viterbi.ipynb
     - title: Sequence Retrieval
