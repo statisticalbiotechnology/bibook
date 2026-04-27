@@ -1,6 +1,8 @@
 # Bioinformatics for Biotechnology students
 
-<a href="https://www.kaell.se/bibook/"><img src="https://jupyterbook.org/badge.svg" alt="Jupyter Book Badge"/></a>
+
+[![Jupyter Book Badge](https://raw.githubusercontent.com/jupyter-book/jupyter-book/next/docs/media/images/badge.svg)](https://jupyterbook.org)
+[![DOI](https://img.shields.io/badge/DOI-Cite_Jupyter_Book-blue)](https://jupyterbook.org/stable/cite/)
 
 This book is written with KTH's course [CB2442, Bioinformatics](https://www.kth.se/student/kurser/kurs/CB2442) in mind. Some of the material has been generated with ChatGPT.
 
