@@ -37,6 +37,8 @@ jobs:
 
     # Build the book (must run from inside the bibook/ subdirectory)
     - name: Build the book
+      env:
+        BASE_URL: /bibook
       run: |
         cd bibook && jupyter book build --html
 
