@@ -27,7 +27,7 @@ Profile HMMs offer several key applications in bioinformatics:
 2. **Domain Detection:** Profile HMMs can identify and characterize functional domains in proteins by matching sequence segments to domain profiles.
 
 3. **Sequence Classification:** By comparing a sequence to various profile HMMs, we can classify it into families or groups, aiding in the identification of evolutionary relationships.
-One notable database of protein domain models is [Pfam](http://pfam.xfam.org/). Pfam and the HMMER software suite have been developed in parallel, providing comprehensive resources for protein families based on seed alignments.
+One notable database of protein domain models is [Pfam](https://www.ebi.ac.uk/interpro/). Pfam and the HMMER software suite have been developed in parallel, providing comprehensive resources for protein families based on seed alignments.
 
 ### Structure of a Profile HMM
 
@@ -136,7 +136,7 @@ Given a Profile HMM and a query sequence, the Viterbi algorithm identifies the m
 
 ### Using Viterbi for Sequence Classification
 
-The Viterbi algorithm is not only useful for aligning a sequence to a single Profile HMM, but also for **scoring new sequences against entire libraries of HMMs**. For example, the [Pfam](http://pfam.xfam.org/) database contains thousands of curated profile HMMs representing protein domains. By scoring a new sequence against all models in Pfam, one can identify which domain families are present and classify the sequence accordingly.
+The Viterbi algorithm is not only useful for aligning a sequence to a single Profile HMM, but also for **scoring new sequences against entire libraries of HMMs**. For example, the [Pfam](https://www.ebi.ac.uk/interpro/) database contains thousands of curated profile HMMs representing protein domains. By scoring a new sequence against all models in Pfam, one can identify which domain families are present and classify the sequence accordingly.
 
 ## Comparison to MSAs
 
@@ -146,4 +146,4 @@ Profile HMMs provide a probabilistic framework that captures the variability and
 
 ### Disadvantages
 
-Despite their strengths, Profile HMMs have limitations. The conditional independence criterion, which assumes that the emitted sequence is independent of other emissions given the hidden state, can limit the model's ability to capture correlations between different positions in the sequence. As a result, Profile HMMs may model interdependencies between positions within a sequence. I.e. if amino acids covary between two positions in a sequence the HMM will not be able to recognize such a pattern.
+Despite their strengths, Profile HMMs have limitations. The conditional independence criterion, which assumes that the emitted sequence is independent of other emissions given the hidden state, limits the model's ability to capture correlations between different positions in the sequence. As a result, Profile HMMs cannot model interdependencies between positions within a sequence. I.e. if amino acids covary between two positions in a sequence the HMM will not be able to represent or recognize such a pattern.

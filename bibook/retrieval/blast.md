@@ -51,7 +51,7 @@ This results in the following 3-mers:
 ### Indexing
 
 Before BLAST can efficiently search a database, it is critical that one index the sequences. Here's how BLAST indexes sequences:
-BLAST creates a lookup table where each entry corresponds to a k-mer (typically 11 for nucleotides and 3-6 for proteins). For each k-mer in the database sequences, 
+BLAST creates a lookup table where each entry corresponds to a k-mer (the default word size is 11 for nucleotides and 3 for proteins). For each k-mer in the database sequences, 
 the algorithm stores its position within the sequence.
 
 ## The BLAST Algorithm
@@ -77,7 +77,7 @@ This combined approach gives an overview of BLAST, highlighting its key features
 BLAST assesses the statistical significance of alignments using the Gumbel extreme value distribution (EVD) model. This model estimates the probability of an alignment score being due to chance. An E-value (expect value) is a statistical measure used in BLAST to assess the significance of an alignment with a score $S$. 
 
 - **Definition**: The E-value represents the number of alignments with a score equal to or greater than $S$ that would be expected to occur by chance in the searched database.
-- **Interpretation**: Lower E-values indicate more significant alignments. For example, an E-value of 0.01 suggests that this alignment quality would be obtained by chance 1 time out of a hundred with a query sequence of the same length and database.
+- **Interpretation**: Lower E-values indicate more significant alignments. For example, an E-value of 0.01 means that, on average, 0.01 alignments of this quality or better would be expected by chance for a query sequence of the same length searched against a database of the same size — i.e. roughly one such chance alignment per hundred searches. (Strictly, the E-value is an expected *number* of hits rather than a probability, but for small E-values it closely approximates the probability of seeing at least one such alignment by chance.)
 
 The E-values in BLAST searches provide a direct indication of alignment quality:
 

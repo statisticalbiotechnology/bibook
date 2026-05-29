@@ -21,7 +21,7 @@ alt: One step of an alignment
 ---
 A step in the path representing an alignment.
 
-If your alignment is in position $a_i,b_j$ of two sequences $\mathbf{a}=(a_1,\ldots,a_N)$ and $\mathbf{b}=(b_1,\ldots,b_N)$ then the next step in the alignment is either a <span style="color:green">match/mismatch</span> between $a_{i+1},b_{j+1}$ (diagonal movement), a <span style="color:magenta">delete</span> $a_{i+1},-$, (a vertical movement), or an <span style="color:orange">insert</span> $-,b_{j+1}$, (a horizontal movement).
+If your alignment is in position $a_i,b_j$ of two sequences $\mathbf{a}=(a_1,\ldots,a_N)$ and $\mathbf{b}=(b_1,\ldots,b_M)$ then the next step in the alignment is either a <span style="color:green">match/mismatch</span> between $a_{i+1},b_{j+1}$ (diagonal movement), a <span style="color:magenta">delete</span> $a_{i+1},-$, (a vertical movement), or an <span style="color:orange">insert</span> $-,b_{j+1}$, (a horizontal movement).
 
 ```
 
