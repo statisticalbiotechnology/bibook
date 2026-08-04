@@ -18,33 +18,38 @@ project:
       output: exports/bibook.pdf
   toc:
     - file: intro.md
-    - title: Introduction to Alignments
+    - title: Sequence alignment
       children:
-        - file: pairwise/alignment_intro.md
-        - file: pairwise/alignment_algorithm.md
-    - title: Algorithms for Pairwise Alignments
+        - title: Introduction to Alignments
+          children:
+            - file: pairwise/alignment_intro.md
+            - file: pairwise/alignment_algorithm.md
+        - title: Algorithms for Pairwise Alignments
+          children:
+            - file: pairwise/needleman.md
+            - file: pairwise/nw_code.md
+            - file: pairwise/waterman.md
+            - file: pairwise/sw_code.ipynb
+            - file: pairwise/semi.md
+            - file: pairwise/sg_code.ipynb
+        - title: Protein Sequence Alignment
+          children:
+            - file: protein/matrix.ipynb
+            - file: protein/prot_code.ipynb
+        - title: Multiple Sequence Alignments
+          children:
+            - file: msa/progressive.md
+            - file: msa/msa.ipynb
+            - file: msa/seqlogo.ipynb
+            - file: msa/profileHMM.md
+            - file: msa/viterbi.ipynb
+        - title: Sequence Retrieval
+          children:
+            - file: retrieval/blast.md
+            - file: retrieval/blast_code.ipynb
+    - title: Phylogenetics
       children:
-        - file: pairwise/needleman.md
-        - file: pairwise/nw_code.md
-        - file: pairwise/waterman.md
-        - file: pairwise/sw_code.ipynb
-        - file: pairwise/semi.md
-        - file: pairwise/sg_code.ipynb
-    - title: Protein Sequence Alignment
-      children:
-        - file: protein/matrix.ipynb
-        - file: protein/prot_code.ipynb
-    - title: Multiple Sequence Alignments
-      children:
-        - file: msa/progressive.md
-        - file: msa/msa.ipynb
-        - file: msa/seqlogo.ipynb
-        - file: msa/profileHMM.md
-        - file: msa/viterbi.ipynb
-    - title: Sequence Retrieval
-      children:
-        - file: retrieval/blast.md
-        - file: retrieval/blast_code.ipynb
+        - file: phylogenetics/intro.md
 site:
   options:
     logo: bibook.webp
