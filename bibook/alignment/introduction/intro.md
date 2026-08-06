@@ -121,11 +121,11 @@ Total alignment score = 5 - 1 - 3 = **1**
 
 The alignment type specifies which part of each sequence must be covered by the optimal alignment.
 
-**Global alignment** spans the full length of both sequences and penalises any unaligned ends. Use it when comparing closely related sequences of similar length — for example, orthologous genes from two species. The classic algorithm is [Needleman–Wunsch](needleman).
+**Global alignment** spans the full length of both sequences and penalises any unaligned ends. Use it when comparing closely related sequences of similar length — for example, orthologous genes from two species. The classic algorithm is [Needleman–Wunsch](../pairwise/needleman).
 
-**Local alignment** finds the highest-scoring contiguous region of similarity anywhere within the two sequences, ignoring flanking regions entirely. Use it when only part of each sequence is expected to match — for example, detecting a conserved domain in otherwise divergent proteins. The classic algorithm is [Smith–Waterman](waterman).
+**Local alignment** finds the highest-scoring contiguous region of similarity anywhere within the two sequences, ignoring flanking regions entirely. Use it when only part of each sequence is expected to match — for example, detecting a conserved domain in otherwise divergent proteins. The classic algorithm is [Smith–Waterman](../pairwise/waterman).
 
-**Semi-global alignment** requires one sequence to be fully covered while allowing unpenalised overhangs at either end of the other. Use it when a shorter sequence (e.g. a gene) should align entirely within a longer one (e.g. a genome). See [variants of Needleman–Wunsch](semi).
+**Semi-global alignment** requires one sequence to be fully covered while allowing unpenalised overhangs at either end of the other. Use it when a shorter sequence (e.g. a gene) should align entirely within a longer one (e.g. a genome). See [variants of Needleman–Wunsch](../pairwise/semi).
 
 ## Alignment Algorithm
 
@@ -162,14 +162,13 @@ In the next chapters we will describe a set of such dynamic programming algorith
 * - **Global**
   - Aligns full length of both sequences
   - Closely related sequences of similar length
-  - [Needleman–Wunsch](needleman)
+  - [Needleman–Wunsch](../pairwise/needleman)
 * - **Local**
   - Aligns subsequences with highest similarity
   - Motif/domain detection, different-length sequences
-  - [Smith–Waterman](waterman)
+  - [Smith–Waterman](../pairwise/waterman)
 * - **Semi-global**
   - Aligns one sequence entirely, allows overhangs in the other
   - Gene-to-genome, substring matching
-  - [Variants of Needleman–Wunsch](semi)
+  - [Variants of Needleman–Wunsch](../pairwise/semi)
 ``` 
-

@@ -16,40 +16,59 @@ project:
     - format: pdf
       template: plain_latex_book
       output: exports/bibook.pdf
+      authors:
+        - name: LUKAS KÄLL \& ANDERS ANDERSSON
   toc:
     - file: intro.md
     - title: Sequence alignment
       children:
         - title: Introduction to Alignments
           children:
-            - file: pairwise/alignment_intro.md
-            - file: pairwise/alignment_algorithm.md
+            - file: alignment/introduction/intro.md
+            - file: alignment/introduction/alignment_algorithm.md
         - title: Algorithms for Pairwise Alignments
           children:
-            - file: pairwise/needleman.md
-            - file: pairwise/nw_code.md
-            - file: pairwise/waterman.md
-            - file: pairwise/sw_code.ipynb
-            - file: pairwise/semi.md
-            - file: pairwise/sg_code.ipynb
+            - file: alignment/pairwise/needleman.md
+            - file: alignment/pairwise/nw_code.md
+            - file: alignment/pairwise/waterman.md
+            - file: alignment/pairwise/sw_code.ipynb
+            - file: alignment/pairwise/semi.md
+            - file: alignment/pairwise/sg_code.ipynb
         - title: Protein Sequence Alignment
           children:
-            - file: protein/matrix.ipynb
-            - file: protein/prot_code.ipynb
+            - file: alignment/protein/matrix.ipynb
+            - file: alignment/protein/prot_code.ipynb
         - title: Multiple Sequence Alignments
           children:
-            - file: msa/progressive.md
-            - file: msa/msa.ipynb
-            - file: msa/seqlogo.ipynb
-            - file: msa/profileHMM.md
-            - file: msa/viterbi.ipynb
+            - file: alignment/msa/progressive.md
+            - file: alignment/msa/msa.ipynb
+            - file: alignment/msa/seqlogo.ipynb
+            - file: alignment/msa/profileHMM.md
+            - file: alignment/msa/viterbi.ipynb
         - title: Sequence Retrieval
           children:
-            - file: retrieval/blast.md
-            - file: retrieval/blast_code.ipynb
+            - file: alignment/retrieval/blast.md
+            - file: alignment/retrieval/blast_code.ipynb
     - title: Phylogenetics
       children:
-        - file: phylogenetics/intro.md
+        - title: Introduction to Phylogenetics
+          children:
+            - file: phylogenetics/introduction/intro.md
+            - file: phylogenetics/introduction/data.md
+        - title: Distance-Based Phylogenetics
+          children:
+            - file: phylogenetics/distance/distances.md
+            - file: phylogenetics/distance/distances_code.ipynb
+            - file: phylogenetics/distance/upgma.md
+            - file: phylogenetics/distance/neighbor_joining.md
+        - title: Character-Based Phylogenetics
+          children:
+            - file: phylogenetics/character/parsimony.md
+            - file: phylogenetics/character/likelihood.md
+            - file: phylogenetics/character/bayesian_inference.md
+        - title: Interpreting Phylogenetic Trees
+          children:
+            - file: phylogenetics/interpretation/rooting_bootstrap.md
 site:
   options:
     logo: bibook.webp

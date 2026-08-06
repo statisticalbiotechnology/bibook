@@ -12,7 +12,7 @@ PDF_FILE=$(BUILD_DIR)/bibook.pdf
 all: build-book $(PDF_FILE)
 
 imgs:
-	@$(MAKE) -C bibook/msa/img
+	@$(MAKE) -C bibook/alignment/msa/img
 
 build-book: imgs
 	$(CONDA_ACTIVATE) jb; cd $(BOOK_DIR) && jupyter book build --html
@@ -38,5 +38,4 @@ clean-all:
 	cd $(BOOK_DIR) && jupyter book clean && rm -rf exports/
 
 .PHONY: all clean clean-all
-
 
