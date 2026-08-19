@@ -97,7 +97,7 @@ Where:
 - $n$ is the length of the database, which is the sum of the lengths of all the sequences in the database.
 - $K$ and $\lambda$ are the Karlin-Altschul parameters. They can be estimated from large sets of random sequence alignments:
   - $\lambda$ normalizes the alignment score.
-  - $K$ scales the E-value based on the database and sequence lengths.
+  - $K$ is a scale constant, determined by the scoring matrix and the background residue frequencies, that corrects the search space $mn$ for the correlation between overlapping candidate alignments.
 - $S$ is the alignment score, calculated from the selected scoring matrix and the alignment of residues. It accounts for the sum of substitution and gap scores for the aligned residues.
 
 The E-value is directly proportional to the search space size (m × n) and inversely proportional to the exponential function of the alignment score (S). Consequently, larger databases provide more opportunities for chance alignments, resulting in higher E-values (indicating weaker statistical significance) for the same level of sequence similarity.

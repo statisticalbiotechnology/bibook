@@ -121,7 +121,7 @@ S_{i,j-1} & +d(-,b_j)
 \end{array}
 \right.$
 
-This recursion is easily transformed into for-loops. We are free to select the order the matrix is filled in so we select to fill in row per row, i.e. rows become the inner loop, the columns the outer loop.
+This recursion is easily transformed into for-loops. We are free to select the order the matrix is filled in so we select to fill in row per row, i.e. the columns become the inner loop, the rows the outer loop.
 
 Again we keep track of the move that lead to a certain position by filling in the `trace` matrix.
 
