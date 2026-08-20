@@ -4,6 +4,7 @@ project:
   authors:
     - name: Lukas Käll
   github: statisticalbiotechnology/bibook
+  jupyter: true
   thebe:
     binder:
       repo: statisticalbiotechnology/bibook
@@ -45,6 +46,9 @@ project:
       children:
         - file: retrieval/blast.md
         - file: retrieval/blast_code.ipynb
+  downloads:
+    - url: https://193.10.159.40.nip.io/hub/user-redirect/git-pull?repo=https://github.com/statisticalbiotechnology/bibook&urlpath=lab/tree/bibook/bibook&branch=main
+      title: Run on the KTH JupyterHub
 site:
   options:
     logo: bibook.webp

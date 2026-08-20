@@ -1,5 +1,10 @@
 # Code: Global pairwise alignments
 
+<!-- launch-badges -->
+[![KTH JupyterHub](https://img.shields.io/badge/launch-KTH%20JupyterHub-F37626?logo=jupyter&logoColor=white)](https://193.10.159.40.nip.io/hub/user-redirect/git-pull?repo=https://github.com/statisticalbiotechnology/bibook&urlpath=lab/tree/bibook/bibook/pairwise/nw_code.md&branch=main)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/statisticalbiotechnology/bibook/main?labpath=bibook/pairwise/nw_code.md)
+
+
 We will now make use of our definitions of a Needleman-Wunsch alignment to see how the algorithm transforms to actual code. The sections below will walk you through how this is done. 
 
 ````{dropdown} Service functions for formatting and printing alignments
