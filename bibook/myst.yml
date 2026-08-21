@@ -11,6 +11,10 @@ project:
       provider: github
       url: https://mybinder.org
       ref: main
+  numbering:
+    title: true
+    heading_1:
+      enabled: false
   bibliography:
     - references.bib
   exports:
