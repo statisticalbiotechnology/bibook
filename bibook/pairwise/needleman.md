@@ -1,3 +1,9 @@
+---
+kernelspec:
+  name: python3
+  display_name: Python 3
+---
+
 # Needleman-Wunsch Algorithm: Global Alignment
 
 ## Background
@@ -60,15 +66,87 @@ $d(x,y)= \begin{cases}1 & \textrm{if} x=y\\ -1 & \textrm{otherwise } \end{cases}
 
 We start by filling in the borders of the matrix using the Equation {eq}`nw-init`, as shown in {numref}`fig-nw-short-1`.
 
-```{figure} ./img/nw_short_1.png
-:name: fig-nw-short-1
-:align: left
-:width: 50%
+```{code-cell} python
+:tags: [hide-input]
+:label: fig-nw-short-1
+:caption: Initialization of the gap penalty matrix for the Needleman-Wunsch algorithm.
 
-Initialization of the gap penalty matrix for the Needleman-Wunsch algorithm, using Equation {eq}`nw-init`.
+from alignviz import Alignment
+
+# d(x,y) = 1 for a match and -1 otherwise, with a gap penalty of -1.
+short = Alignment("GAC", "ACG", match=1, mismatch=-1, gap=-1)
+
+# frames() gives the initialised borders, then one figure per cell of the
+# recursion in the order they are filled in, and finally the traceback.
+frames = short.frames()
+
+short.figure(upto=short.n_init)
 ```
 
 We then recursively fill in the other elements of the matrix in a row wise manner using Equation {eq}`nw-recursion`, as shown in {ref}`fig-nw-recursion`.
+
+```{code-cell} python
+:tags: [remove-cell]
+:label: cell-nw-step-1
+
+frames[1]
+```
+
+```{code-cell} python
+:tags: [remove-cell]
+:label: cell-nw-step-2
+
+frames[2]
+```
+
+```{code-cell} python
+:tags: [remove-cell]
+:label: cell-nw-step-3
+
+frames[3]
+```
+
+```{code-cell} python
+:tags: [remove-cell]
+:label: cell-nw-step-4
+
+frames[4]
+```
+
+```{code-cell} python
+:tags: [remove-cell]
+:label: cell-nw-step-5
+
+frames[5]
+```
+
+```{code-cell} python
+:tags: [remove-cell]
+:label: cell-nw-step-6
+
+frames[6]
+```
+
+```{code-cell} python
+:tags: [remove-cell]
+:label: cell-nw-step-7
+
+frames[7]
+```
+
+```{code-cell} python
+:tags: [remove-cell]
+:label: cell-nw-step-8
+
+frames[8]
+```
+
+```{code-cell} python
+:tags: [remove-cell]
+:label: cell-nw-step-9
+
+frames[9]
+```
 
 (fig-nw-recursion)=
 **Filling in the NW matrix**
@@ -76,70 +154,52 @@ We then recursively fill in the other elements of the matrix in a row wise manne
 ::::{grid} 3
 
 :::{grid-item}
-![max(0+-1,-1+-1,-1+-1)=-1](./img/nw_short_2.png)
-
-max(0+-1,-1+-1,-1+-1)=-1
+![](#cell-nw-step-1)
 :::
 
 :::{grid-item}
-![max(-1+-1,-2+-1,-1+-1)=-2](./img/nw_short_3.png)
-
-max(-1+-1,-2+-1,-1+-1)=-2
+![](#cell-nw-step-2)
 :::
 
 :::{grid-item}
-![max(-2+1,-3+-1,-2+-1)=-1](./img/nw_short_4.png)
-
-max(-2+1,-3+-1,-2+-1)=-1
+![](#cell-nw-step-3)
 :::
 
 :::{grid-item}
-![max(-1+1,-1+-1,-2+-1)=0](./img/nw_short_5.png)
-
-max(-1+1,-1+-1,-2+-1)=0
+![](#cell-nw-step-4)
 :::
 
 :::{grid-item}
-![max(-1+-1,-2+-1,0+-1)=-1](./img/nw_short_6.png)
-
-max(-1+-1,-2+-1,0+-1)=-1
+![](#cell-nw-step-5)
 :::
 
 :::{grid-item}
-![max(-2+-1,-1+-1,-1+-1)=-2](./img/nw_short_7.png)
-
-max(-2+-1,-1+-1,-1+-1)=-2
+![](#cell-nw-step-6)
 :::
 
 :::{grid-item}
-![max(-2+-1,0+-1,-3+-1)=-1](./img/nw_short_8.png)
-
-max(-2+-1,0+-1,-3+-1)=-1
+![](#cell-nw-step-7)
 :::
 
 :::{grid-item}
-![max(0+1,-1+-1,-1+-1)=1](./img/nw_short_9.png)
-
-max(0+1,-1+-1,-1+-1)=1
+![](#cell-nw-step-8)
 :::
 
 :::{grid-item}
-![max(-1+-1,-2+-1,1+-1)=0](./img/nw_short_10.png)
-
-max(-1+-1,-2+-1,1+-1)=0
+![](#cell-nw-step-9)
 :::
 ::::
 
-We fill in the elements recursively, in a row-wise manner. Each cell's value is evaluated using Equation {eq}`nw-recursion`. The values of each recursion is spelled out under each image. We store trackers of which step we used to reach a certain cell, indicated by red arrows. Note that for some cells there are multiple optimal steps, i.e. paths that have the same score.
+We fill in the elements recursively, in a row-wise manner. Each cell's value is evaluated using Equation {eq}`nw-recursion`. The cell currently being computed is shaded, together with the (up to) three cells the recursion reads from, and the recursion itself is spelled out under each image. We store trackers of which step we used to reach a certain cell, indicated by red arrows. Note that for some cells there are multiple optimal steps, i.e. paths that have the same score.
 
 Given the filled in matrix, we can now track the optimal path from the bottom right element of the matrix, following the arrows back to the top-left element, as shown in {numref}`fig-nw-bt`.
 
-```{figure} ./img/nw_short_bt.png
-:name: fig-nw-bt
-:align: left
-:width: 50%
+```{code-cell} python
+:tags: [hide-input]
+:label: fig-nw-bt
+:caption: We trace the alignment backwards from the bottom-right corner to the top-left corner of the matrix, and mark the found optimal path with blue arrows.
 
-We trace the alignment backwards from the bottom-right corner to the top-left corner of the matrix, and mark the found optimal path with blue arrows.
+short.figure(path=short.traceback())
 ```
 
 ### Example 2: Longer sequences
@@ -148,17 +208,35 @@ Here we align the sequences $a=$TGCATTA $b=$GCATTAC when $\displaystyle d(x,y)= 
 
 The resulting matrix is found in {numref}`fig-nw-long`.
 
-```{figure} ./img/nw_long_bt.png
-:name: fig-nw-long
-:align: left
-:width: 70%
+```{code-cell} python
+:tags: [hide-input]
+:label: fig-nw-long
+:caption: We follow the alignment backwards from the bottom-right corner to the top-left corner of the matrix, and mark the found optimal path with blue arrows.
 
-We follow the alignment backwards from the bottom-right corner to the top-left corner of the matrix, and mark the found optimal path with blue arrows.
+# match=3, mismatch=-1, gap=-2 is the default scoring of alignviz
+long = Alignment("TGCATTA", "GCATTAC")
+long.figure(path=long.traceback())
 ```
 
 ### Exercise
 
-````{exercise} Needleman-Wunsch Alignment 1
+```{code-cell} python
+:tags: [remove-cell]
+:label: cell-nw-exe1
+
+exe1 = Alignment("GATTA", "GCTAC")
+exe1.figure(path=exe1.traceback())
+```
+
+```{code-cell} python
+:tags: [remove-cell]
+:label: cell-nw-exe2
+
+exe2 = Alignment("GCAGCTA", "GCTA")
+exe2.figure(path=exe2.traceback())
+```
+
+::::{exercise} Needleman-Wunsch Alignment 1
 :label: ex-nwexe1
 
 Calculate the Needleman Wunsch Alignment of the following two sequences:
@@ -173,16 +251,12 @@ Use the following scoring scheme:
 - Mismatch: -1
 - Gap penalty: -2
 
-```{dropdown} **Reveal Answer**
-```{figure} ./img/nw_exe1.png
----
-width: 50%
-align: left
----
-```
-````
+:::{dropdown} **Reveal Answer**
+![](#cell-nw-exe1)
+:::
+::::
 
-````{exercise} Needleman-Wunsch Alignment 2
+::::{exercise} Needleman-Wunsch Alignment 2
 :label: ex-nwexe2
 
 Calculate the Needleman-Wunsch Alignment of th following two sequences:
@@ -197,14 +271,10 @@ Use the following scoring scheme:
 - Mismatch: -1
 - Gap penalty: -2
 
-```{dropdown} **Reveal Answer**
-```{figure} ./img/nw_exe2.png
----
-width: 50%
-align: left
----
-```
-````
+:::{dropdown} **Reveal Answer**
+![](#cell-nw-exe2)
+:::
+::::
 
 ## Big-O Notation
 
@@ -217,6 +287,25 @@ In the same way memory usage also scales with $ \mathcal{O}(MN)$, as the scoring
 Big-O notation serves as a quick and effective tool for comparing different algorithms. For example, it allows us to see at a glance how the Needleman-Wunsch algorithm compares to other sequence alignment algorithms in terms of efficiency.
 
 A useful comparison is the complexity of our initial proposition, to enumerate and calculate the scores for all possible alignments of two sequences. This can be done by calculating the number of alignments with $k$ matches/mis-matches between the two sequences which is ${M \choose k}{N \choose k}$. If we assume that $N>M$ and sum this for all possible values of $k$, we get $\sum_{k=0}^M{M \choose k}{N \choose k}=\sum_{k=0}^M{M \choose M-k}{N \choose k}={N+M \choose M}=\frac{(M+N)!}{M!*N!}$ number of different alignments. This can be [shown](https://math.stackexchange.com/a/4134185) to follow $\mathcal{O}((\frac{e(N+M)}{M})^M)$ {cite}`lange2002mathematical, eddy2004dynamic`.
+
+## Try it yourself
+
+The figures in this chapter are all drawn by the small module `alignviz.py`, which
+also drives an interactive app at
+[alignviz.serve.scilifelab.se](https://alignviz.serve.scilifelab.se). There you can
+type in two sequences of your own, change the scores for matches, mismatches and
+gaps, and watch the dynamic programming matrix and its traceback redraw as you type.
+
+It is well worth a few minutes of experimentation. Some things to try:
+
+- Make the gap penalty harsher and harsher, and see at what point the alignment
+  stops using gaps altogether.
+- Look for sequence pairs where a cell has more than one incoming arrow. Those are
+  the cases where several different alignments share the same optimal score.
+- Align a short sequence against a much longer one, and see what a global alignment
+  does with the overhanging ends. The Smith-Waterman and semi-global algorithms of
+  the coming chapters are the answer to exactly that problem, and the app can draw
+  them as well.
 
 ```{bibliography}
 :filter: docname in docnames

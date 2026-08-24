@@ -1,3 +1,9 @@
+---
+kernelspec:
+  name: python3
+  display_name: Python 3
+---
+
 
 # Smith-Waterman Algorithm: Local Alignment
 
@@ -52,37 +58,65 @@ $d(x,y)= \begin{cases}1 & \textrm{if} x=y\\ -1 & \textrm{otherwise } \end{cases}
 
 We start by filling in the borders of the matrix using Equation {eq}`sw-init`, as shown in {numref}`fig-sw-init`.
 
-```{figure} ./img/sw_short_init.png
-:name: fig-sw-init
-:align: left
-:width: 50%
+```{code-cell} python
+:tags: [hide-input]
+:label: fig-sw-init
+:caption: Initialization of the dynamic programming matrix. For Smith-Waterman this equates to setting the elements of the first row and column to 0.
 
-Initialization of the dynamic programming matrix, using Equation {eq}`sw-init`. For Smith-Waterman this equates to setting the elements of the first row and column to 0.
+from alignviz import Alignment
+
+# mode="local" initiates the borders with zeros and lets the recursion fall
+# back on zero; d(x,y) = 1 for a match and -1 otherwise, gap penalty -1.
+sw = Alignment("GAC", "ACG", match=1, mismatch=-1, gap=-1, mode="local")
+
+sw.figure(upto=sw.n_init)
 ```
 
 We then recursively fill in the other elements of the matrix in a row wise manner using Equation {eq}`sw-recursion`, as shown in {numref}`fig-sw-fill`.
 
-```{figure} ./img/sw_short_fill.png
-:name: fig-sw-fill
-:align: left
-:width: 50%
+```{code-cell} python
+:tags: [hide-input]
+:label: fig-sw-fill
+:caption: Filling in the matrix. We fill in the elements recursively, in a row-wise manner. We store trackers of which step we used to reach a certain cell, indicated by red arrows. Note that for some cells there are multiple optimal steps, i.e. paths that have the same score.
 
-Filling in the matrix. We fill in the elements recursively, in a row-wise manner. Each cell's value is evaluated using Equation {eq}`sw-recursion`. We store trackers of which step we used to reach a certain cell, indicated by red arrows. Note that for some cells there are multiple optimal steps, i.e. paths that have the same score.
+sw.figure()
 ```
 
 Given the filled in matrix, we can now track the optimal path from the maximal element of the matrix, following the arrows back to the first element in the path with a score of zero, as shown in {numref}`fig-sw-bt`.
 
-```{figure} ./img/sw_short_bt.png
-:name: fig-sw-bt
-:align: left
-:width: 50%
+```{code-cell} python
+:tags: [hide-input]
+:label: fig-sw-bt
+:caption: We follow the alignment backwards from the matrix element with the largest value, $\max_{i,j} S_{ij}$, to the first encountered cell with a value of zero where we stop, and mark the found optimal path with blue arrows.
 
-We follow the alignment backwards from the matrix element with the largest value, $\max_{i,j} S_{ij}$, to the first encountered cell with a value of zero where we stop, and mark the found optimal path with blue arrows.
+sw.figure(path=sw.traceback())
 ```
 
 ### Exercises 
 
-````{exercise} Smith-Waterman Alignment 1
+```{code-cell} python
+:tags: [remove-cell]
+:label: cell-sw-exe1
+
+from alignviz import Style
+
+# match=3, mismatch=-1, gap=-2 is the default scoring of alignviz
+exe1 = Alignment("GCGATTA", "GCTTAC", mode="local")
+exe1.figure(path=exe1.traceback())
+```
+
+```{code-cell} python
+:tags: [remove-cell]
+:label: cell-sw-exe2
+
+# a 16x14 matrix; drawn with smaller cells so that it fits the page
+compact = Style(cell=44, value_size=16, letter_size=18)
+exe2 = Alignment("CTATCTCGCTATCCA", "CTACGCTATTTCA", mode="local")
+exe2.figure(path=exe2.traceback(), style=compact)
+```
+
+
+::::{exercise} Smith-Waterman Alignment 1
 :label: ex-swexe1
 
 Calculate the Smith-Waterman Alignment of the following two sequences:
@@ -97,16 +131,12 @@ Use the following scoring scheme:
 - Mismatch: -1
 - Gap penalty: -2
 
-```{dropdown} **Reveal Answer**
-```{figure} ./img/sw_exe1.png
----
-width: 50%
-align: left
----
-```
-````
+:::{dropdown} **Reveal Answer**
+![](#cell-sw-exe1)
+:::
+::::
 
-````{exercise} Smith-Waterman Alignment 2
+::::{exercise} Smith-Waterman Alignment 2
 :label: ex-swexe2
 
 Calculate the Smith-Waterman Alignment of the following two sequences:
@@ -121,14 +151,10 @@ Use the following scoring scheme:
 - Mismatch: -1
 - Gap penalty: -2
 
-```{dropdown} **Reveal Answer**
-```{figure} ./img/sw_exe2.png
----
-width: 90%
-align: left
----
-```
-````
+:::{dropdown} **Reveal Answer**
+![](#cell-sw-exe2)
+:::
+::::
 
 
 ```{bibliography}

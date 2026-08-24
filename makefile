@@ -14,12 +14,17 @@ all: build-book $(PDF_FILE)
 imgs:
 	@$(MAKE) -C bibook/msa/img
 
+# Live preview. --execute is NOT the default for `jupyter book start`, and
+# without it every alignviz figure renders as an empty box.
+serve: imgs
+	$(CONDA_ACTIVATE) jb; cd $(BOOK_DIR) && jupyter book start --execute
+
 build-book: imgs
-	$(CONDA_ACTIVATE) jb; cd $(BOOK_DIR) && jupyter book build --html
+	$(CONDA_ACTIVATE) jb; cd $(BOOK_DIR) && jupyter book build --html --execute
 
 # Step 1: Build the book with Jupyter Book using the LaTeX builder
 $(BUILD_DIR):
-	cd $(BOOK_DIR) && jupyter book build --tex
+	cd $(BOOK_DIR) && jupyter book build --tex --execute
 
 # Step 2: Replace all occurrences of "align*" with "aligned" in bibook.tex
 $(TEX_FILE): $(BUILD_DIR)
@@ -37,6 +42,6 @@ clean:
 clean-all:
 	cd $(BOOK_DIR) && jupyter book clean && rm -rf exports/
 
-.PHONY: all clean clean-all
+.PHONY: all serve clean clean-all
 
 

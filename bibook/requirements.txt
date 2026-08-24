@@ -1,4 +1,5 @@
 jupyter-book
+ipykernel
 matplotlib
 numpy
 logomaker
