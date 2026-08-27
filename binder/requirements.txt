@@ -1,0 +1,7 @@
+# Runtime dependencies for executing the notebooks on Binder.
+# Deliberately NOT -r ../bibook/requirements.txt: that file also pulls in
+# jupyter-book, which drags a whole node toolchain into the image and is only
+# needed to *build* the book, never to run a notebook.
+numpy
+matplotlib
+logomaker
