@@ -21,7 +21,7 @@ The implementation of the Semi-global alignment algorithm involves initializing 
 
 ## Applications
 
-It is particularly useful in situations where we strive to align a short sequence to a longer sequence.
+Because gaps at the ends of *either* sequence are free, only the overlapping part of the two sequences is aligned; neither sequence has to be covered in full. This makes semi-global alignment the natural choice when we expect the two sequences to overlap rather than to correspond along their entire lengths, such as when detecting the overlap between two sequencing reads during genome assembly, or when aligning a gene that continues past the end of a contig.
 
 ## The definitions of the problem, and the solution
 
@@ -131,7 +131,7 @@ Sequence alignment algorithms can be broadly categorized into three types: globa
 
 - **Global alignment (Needleman-Wunsch)** aligns two sequences from end to end, optimizing the alignment across their entire lengths. It is best suited for sequences of similar length and overall similarity.
 - **Local alignment (Smith-Waterman)** finds the highest-scoring matching region (subsequence) between two sequences, making it ideal for identifying conserved domains or motifs within otherwise divergent sequences.
-- **Semi-global alignment** is a hybrid approach, allowing for gaps at the ends of one or both sequences without penalty. This is particularly useful when aligning a shorter sequence (such as a sequencing read or a gene) to a longer reference (such as a chromosome or genome).
+- **Semi-global alignment** is a hybrid approach, allowing gaps at the ends of both sequences without penalty, so that only the overlapping region is aligned. Neither sequence needs to be covered in full, which makes it well suited to sequences that are expected to overlap, such as two sequencing reads drawn from the same locus.
 
 The table below summarizes the key differences:
 
@@ -139,6 +139,6 @@ The table below summarizes the key differences:
 |----------------|----------------------|-----------------------|--------------------------|----------------------|------------------------------------------|
 | Global         | Gap penalties        | Global (Needleman-Wunsch) | Bottom-right cell         | Top-left cell         | Full-length comparison of similar sequences |
 | Local          | Zeros                | Local (Smith-Waterman)    | Max cell anywhere         | First zero           | Motif/domain search, conserved regions      |
-| Semi-global    | Zeros                | Global (Needleman-Wunsch) | Max in last row/column    | First zero in row/col | Short-to-long sequence alignment            |
+| Semi-global    | Zeros                | Global (Needleman-Wunsch) | Max in last row/column    | First cell of row 0 or column 0 | Overlapping sequences, e.g. read overlaps in assembly |
 
 Understanding these differences helps in selecting the appropriate algorithm for a given biological problem.

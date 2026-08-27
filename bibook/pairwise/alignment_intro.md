@@ -125,7 +125,7 @@ The alignment type specifies which part of each sequence must be covered by the 
 
 **Local alignment** finds the highest-scoring contiguous region of similarity anywhere within the two sequences, ignoring flanking regions entirely. Use it when only part of each sequence is expected to match — for example, detecting a conserved domain in otherwise divergent proteins. The classic algorithm is [Smith–Waterman](waterman).
 
-**Semi-global alignment** allows unpenalised overhangs at the ends of both sequences, so that only the overlapping regions are aligned. Use it when a shorter sequence (e.g. a gene) should be aligned against a longer one (e.g. a genome) without paying for the parts that hang over the ends. See [variants of Needleman–Wunsch](semi).
+**Semi-global alignment** allows unpenalised overhangs at the ends of both sequences, so that only the overlapping regions are aligned. Use it when the two sequences are expected to overlap — two sequencing reads from the same locus, say — rather than to correspond over their full lengths. Note that the match has to reach a boundary of each sequence: a region matching in the *middle* of a long sequence is a job for local alignment. See [variants of Needleman–Wunsch](semi).
 
 ## Alignment Algorithm
 
@@ -169,7 +169,7 @@ In the next chapters we will describe a set of such dynamic programming algorith
   - [Smith–Waterman](waterman)
 * - **Semi-global**
   - Aligns only the overlapping region, free overhangs at both ends
-  - Gene-to-genome, substring matching
+  - Read overlaps in assembly, sequences running past each other's ends
   - [Variants of Needleman–Wunsch](semi)
 ``` 
 
