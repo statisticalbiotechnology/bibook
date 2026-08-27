@@ -1,16 +1,26 @@
+---
+kernelspec:
+  name: python3
+  display_name: Python 3
+---
+
 # Code: Global pairwise alignments
 
 <!-- launch-badges -->
-[![KTH JupyterHub](https://img.shields.io/badge/launch-KTH%20JupyterHub-F37626?logo=jupyter&logoColor=white)](https://193.10.159.40.nip.io/hub/user-redirect/git-pull?repo=https://github.com/statisticalbiotechnology/bibook&urlpath=lab/tree/bibook/bibook/pairwise/nw_code.md&branch=main)
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/statisticalbiotechnology/bibook/main?labpath=bibook/pairwise/nw_code.md)
+[![KTH JupyterHub](https://img.shields.io/badge/launch-KTH%20JupyterHub-F37626?logo=jupyter&logoColor=white)](https://193.10.159.40.nip.io/hub/user-redirect/git-pull?repo=https://github.com/statisticalbiotechnology/bibook&urlpath=lab/tree/bibook/bibook/pairwise/nw_code.ipynb&branch=main)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/statisticalbiotechnology/bibook/blob/main/bibook/pairwise/nw_code.ipynb)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/statisticalbiotechnology/bibook/main?labpath=bibook/pairwise/nw_code.ipynb)
 
 
 We will now make use of our definitions of a Needleman-Wunsch alignment to see how the algorithm transforms to actual code. The sections below will walk you through how this is done. 
 
-````{dropdown} Service functions for formatting and printing alignments
+:::{dropdown} Service functions for formatting and printing alignments
 To facilitate the the reasoning in the subsequent cells, we first we define a couple of service functions that we will need later, for formating and printing alignments. It is not important that you understand what these functions do, for now.
+:::
 
-```python
+```{code-cell} python
+:tags: [hide-input]
+
 import numpy as np
 
 # Print 2 sequences on top of each other
@@ -54,13 +64,12 @@ def format_alignment(seqA,seqB,S,trace):
             outB = seqB[j] + outB  # Add character from seqB
     return outA,outB
 ```
-````
 
 ## Scoring system for DNA sequences
 
 We setup the scoring system we need for the alignment of DNA sequences. Here we use a score system where gaps score -2 and miss matches are scored -1 and matches get a score of 3. You should absolutely try to change the scoring function at some point to see how the values affect the alignments. 
 
-```python
+```{code-cell} python
 # Returns the penalty for introducing a gap in the alignment.
 def gap_penalty():
     return -2.0
@@ -98,7 +107,7 @@ By following these pointers from the bottom-right cell back to the top-left, we 
 
 Here we initiate pointers in the form of a trace matrix. Each element in the trace matrix contains the difference in index between the current cell and the optimal step that lead to the current cell. 
 
-```python
+```{code-cell} python
 # Initialize the dynamic programming matrices for global alignment.
 # S: score matrix, trace: matrix to keep track of the optimal path.
 def initiate_global_dp(m,n):
@@ -130,7 +139,7 @@ This recursion is easily transformed into for-loops. We are free to select the o
 
 Again we keep track of the move that lead to a certain position by filling in the `trace` matrix.
 
-```python
+```{code-cell} python
 # Perform global alignment using the Needleman-Wunsch algorithm.
 # Returns the aligned sequences (with gaps) and optionally prints the score matrix.
 def global_align(seqA,seqB,print_dynamic_matrix = False):
@@ -160,7 +169,7 @@ def global_align(seqA,seqB,print_dynamic_matrix = False):
 
 Now everything is set. We can try the code for any of our favorite sequences. One can toggle the printout of the dynamic programming matrix by a boolean flag as a third argument.
 
-```python
+```{code-cell} python
 # Example: align two short DNA sequences and print the result
 seqA,seqB = global_align("GATTA","GCTAC",True)
 print_alignment(seqA,seqB)
@@ -168,13 +177,13 @@ print_alignment(seqA,seqB)
 
 I add a couple of extra alignments, check them manually as an excercise before the exam. Also try to run a couple of them yourself.
 
-```python
+```{code-cell} python
 # Another example: align two longer sequences
 seqA,seqB = global_align("TGCATTA","GCATTAC",True)
 print_alignment(seqA,seqB)
 ```
 
-```python
+```{code-cell} python
 # Try aligning even longer sequences for practice
 seqA,seqB = global_align("CTATCTCGCTATCCA","CTACGCTATTTCA",True)
 print_alignment(seqA,seqB)
