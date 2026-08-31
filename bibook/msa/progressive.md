@@ -38,47 +38,51 @@ The process builds alignments in a stepwise manner, starting with the most simil
 
 ### Progressive Alignment Example
 
-::::{grid} 2 2 4 4
+::::{grid} 1 1 1 2
 
 :::{grid-item-card}
 Input sequences
-```none
-IAMAPEPTIDE  
-IAMPEPTIDE
-IAMPEPPED
-IAMAPEPPERD
+```{image} img/msa-1-input.png
+:alt: Seq1–Seq5 unaligned
+:width: 100%
 ```
-These are the sequences we want to align.
+The five sequences we want to align. Seq5 carries an extra residue (L) that none of the others have.
 :::
 
 :::{grid-item-card}
 Seq1 and Seq2
-```none
-IAMAPEPTIDE
-IAM-PEPTIDE
+```{image} img/msa-2-seq1-seq2.png
+:alt: Seq1 aligned with Seq2
+:width: 100%
 ```
-We form a pairwise alignment of the two most similar sequences.
-We then pool the resulting sequences with the other two sequences.
+The two most similar sequences are aligned first. One gap opens in Seq2.
 :::
 
 :::{grid-item-card}
 Seq3 and Seq4
-```none
-IAM-PEPPE-D
-IAMAPEPPERD
+```{image} img/msa-3-seq3-seq4.png
+:alt: Seq3 aligned with Seq4
+:width: 100%
 ```
-These sequences are the most similar among the remaining ones.
+The next most similar pair is aligned independently, knowing nothing of the first alignment.
 :::
 
 :::{grid-item-card}
 (Seq1,Seq2) and (Seq3,Seq4)
-```none
-IAMAPEPTID-E
-IAM-PEPTID-E
-IAM-PEPP-E-D
-IAMAPEPP-ERD
+```{image} img/msa-4-profiles.png
+:alt: The two profiles aligned
+:width: 100%
 ```
-There are two generalized sequences left. We align those two, and we are then done.
+The two profiles are aligned against each other. Each side forces a new column into the other, and the gaps from the previous steps are pushed right rather than reconsidered.
+:::
+
+:::{grid-item-card}
+Adding Seq5
+```{image} img/msa-5-final.png
+:alt: Seq5 added to the profile
+:width: 100%
+```
+Seq5 joins last and its extra L opens one more column, inserting a gap into all four earlier sequences at once. No earlier gap is ever removed. The early decisions propagate to the final alignment.
 :::
 ::::
 
