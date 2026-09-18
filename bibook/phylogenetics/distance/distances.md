@@ -3,9 +3,9 @@ authors:
   - name: Anders Andersson
 ---
 
-# Evolutionary Distances
+# Distance-based Methods
 
-Distance-based methods summarize each pair of aligned sequences by a single number. The simplest number is the observed fraction of differences, but evolutionary models are needed when multiple changes can occur at the same site.
+Phylogenertic tree inference methods can be broadly divided into distance-based and character-based methods. Distance-based methods summarize each pair of aligned sequences by a single number. The simplest number is the observed proportion of sites that differ. More advanced evolutionary models account for that multiple changes can occur at the same site.
 
 ## The p-distance
 
@@ -35,7 +35,7 @@ The result is an estimate of substitutions per site. For small $p$, $d_{JC}\appr
 
 ## Kimura two-parameter correction
 
-Transitions exchange two purines ($A \leftrightarrow G$) or two pyrimidines ($C \leftrightarrow T$). Transversions exchange a purine and a pyrimidine. Transitions are often more frequent, so the Kimura two-parameter model distinguishes them.
+Transitions are substitutions between two purines ($A \leftrightarrow G$) or between two pyrimidines ($C \leftrightarrow T$), whereas transversions are substitutions between a purine and a pyrimidine. Because transitions generally occur more frequently than transversions, in the Kimura two-parameter (K2P) model transitions and transversions make different contributions to the estimated distance.
 
 Let $P$ be the fraction of compared sites with transitions and $Q$ the fraction with transversions. Then
 
@@ -44,18 +44,6 @@ d_{K2P} = -\frac{1}{2}\ln(1-2P-Q)-\frac{1}{4}\ln(1-2Q).
 $$
 
 Like every correction, it depends on its assumptions and fails for sufficiently saturated data.
-
-## Molecular clocks
-
-The **molecular clock** hypothesis states that substitutions accumulate at an approximately constant rate. If each of two lineages evolves at rate $r$ substitutions per site per unit time after splitting $t$ time units ago, their expected distance is approximately
-
-$$
-d = 2rt.
-$$
-
-Thus sequence distance can provide information about divergence time when a rate is known. The rate can be calibrated using fossils, dated geological events, ancient DNA or samples collected at known times.
-
-A mutation rate is the rate at which new mutations arise; a substitution rate is the rate at which changes become fixed. They are related but not generally identical. Rates can also differ among genes, sites and lineages because of generation time, selection, population size and molecular constraints. A strict clock is therefore an assumption to test, not a universal law. Relaxed-clock models allow rates to vary.
 
 ## From distances to a matrix
 

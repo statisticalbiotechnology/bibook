@@ -5,7 +5,7 @@ authors:
 
 # From Sequences to Phylogenetic Data
 
-A defensible phylogeny begins before a tree-building program is run. The usual workflow is to collect homologous sequences, align homologous characters, infer a tree and evaluate its reliability.
+A robust phylogenetic analysis is more than just inference of the tree. The usual workflow is to collect homologous sequences, align homologous characters, infer a tree and evaluate its reliability.
 
 ## Homology
 
@@ -21,7 +21,7 @@ If a paralog is mistaken for an ortholog, the inferred gene tree may disagree wi
 
 A sequence alignment normally informs a **gene tree**. It need not equal the species tree. Duplication, gene loss, horizontal transfer, recombination and incomplete lineage sorting can all produce genuine differences. Multiple carefully selected genes are therefore often used to infer organismal relationships.
 
-Horizontal gene transfer is particularly important in prokaryotes. Conserved housekeeping genes are frequently selected because many are transferred less often than genes involved in specialized functions, although no marker is universally immune.
+Horizontal gene transfer is particularly important in prokaryotes. Conserved housekeeping genes (encoding essential functions in the cell) are frequently selected because many are transferred less often than genes involved in specialized functions, although no marker is universally immune.
 
 ## Choosing sequence data
 
@@ -36,19 +36,9 @@ More data do not automatically remove systematic bias. Taxon sampling, contamina
 
 ## Alignment defines the characters
 
-Each column in a multiple sequence alignment is treated as a set of homologous character states inherited from a common ancestral position. An incorrect alignment therefore creates false substitutions and can strongly support a false tree.
+Each column in a multiple sequence alignment is treated as a set of homologous characters inherited from a common ancestral position. An incorrect alignment may therefore creates false substitutions (or conservations) and can support a false tree.
 
-Before tree inference, inspect the alignment for uncertain regions, excessive gaps, non-homologous sequence ends, frame disruptions and potential recombination. Ambiguous regions may need to be realigned, masked or removed, but such decisions should be documented.
-
-## A practical checklist
-
-1. State whether the target is a gene tree or species tree.
-2. Verify sequence identity and direction.
-3. Distinguish orthologs from paralogs where possible.
-4. Select markers appropriate to the divergence timescale.
-5. Construct and inspect the multiple alignment.
-6. Consider recombination or horizontal transfer.
-7. Record all filtering and alignment decisions.
+Before tree inference, inspect the alignment for uncertain regions, excessive gaps, non-homologous sequence ends, frame disruptions and potential recombination. Ambiguous regions may need to be realigned, masked or removed.
 
 ```{exercise}
 You want to infer the species relationships among four bacteria. For one species you accidentally select a distantly related paralog of the target gene. Predict how this could affect the tree, and explain why adding a more sophisticated substitution model would not solve the problem.
