@@ -28,7 +28,7 @@ Horizontal gene transfer is particularly important in prokaryotes. Conserved hou
 The marker must vary at a suitable rate for the evolutionary timescale.
 
 - Fast-evolving nucleotide regions can resolve recent divergences but may saturate over long times.
-- Protein sequences retain useful signal across deeper divergences because several nucleotide changes can encode the same amino acid.
+- Protein sequences saturate more slowly and therefore retain useful signal across deeper divergences. Many nucleotide substitutions, especially at third codon positions, are synonymous and leave the amino acid unchanged. In addition, with 20 possible states, two unrelated protein sequences share far fewer residues by chance than the roughly one in four expected for nucleotides.
 - Structural RNAs contain conserved regions useful for comparing distant organisms.
 - Several genes can be concatenated to increase the number of characters, provided their histories and evolutionary properties are sufficiently compatible.
 
@@ -36,7 +36,7 @@ More data do not automatically remove systematic bias. Taxon sampling, contamina
 
 ## Alignment defines the characters
 
-Each column in a multiple sequence alignment is treated as a set of homologous characters inherited from a common ancestral position. An incorrect alignment may therefore creates false substitutions (or conservations) and can support a false tree.
+Each column in a multiple sequence alignment is treated as a set of homologous characters inherited from a common ancestral position. An incorrect alignment may therefore create false substitutions (or false conserved positions) and can support a false tree.
 
 Before tree inference, inspect the alignment for uncertain regions, excessive gaps, non-homologous sequence ends, frame disruptions and potential recombination. Ambiguous regions may need to be realigned, masked or removed.
 
