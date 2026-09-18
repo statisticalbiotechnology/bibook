@@ -1,4 +1,6 @@
 ---
+authors:
+  - name: Anders Andersson
 numbering:
   title:
     offset: 0
