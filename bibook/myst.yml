@@ -68,7 +68,8 @@ project:
             - file: phylogenetics/character/bayesian_inference.md
         - title: Interpreting Phylogenetic Trees
           children:
-            - file: phylogenetics/interpretation/rooting_bootstrap.md
+            - file: phylogenetics/interpretation/rooting.md
+            - file: phylogenetics/interpretation/support.md
 site:
   options:
     logo: bibook.webp

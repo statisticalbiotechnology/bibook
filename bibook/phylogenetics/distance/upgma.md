@@ -53,11 +53,11 @@ They join at height $0.35/2=0.175$. The branches from the two internal nodes hav
 
 UPGMA produces an **ultrametric** tree: every leaf is equally distant from the root. Biologically, this corresponds to a strict molecular clock in which all sampled lineages have accumulated substitutions at the same rate.
 
-If one lineage evolves much faster, UPGMA can cluster by similar observed distance rather than true ancestry and infer the wrong topology. Neighbor Joining was developed to avoid this strict-clock requirement.
+If one lineage evolves much faster, UPGMA can cluster by similar observed distance rather than true ancestry and infer the wrong topology. **Neighbor Joining (NJ)** does not require a strict molecular clock and can therefore accommodate differences in evolutionary rates among lineages.
 
 ## Strengths and limitations
 
-UPGMA is fast, deterministic and easy to inspect. It is appropriate when distances are approximately ultrametric, and it is widely useful as a clustering method. For general phylogenetic inference, however, its equal-rate assumption must be justified.
+UPGMA is fast, deterministic and easy to inspect. It is appropriate when distances are approximately ultrametric, and it is widely useful as a clustering method. It was popular in the early days of phylogenetics, however, due to its equal-rate assumption it is rarely used today.
 
 ```{exercise}
 Repeat the first UPGMA step after changing $d(S3,S4)$ from 0.1 to 0.5. Which pair joins first, and at what height? Do not implement the algorithm in code; show the matrix reasoning.

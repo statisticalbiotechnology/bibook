@@ -9,7 +9,7 @@ Neighbor Joining (NJ) is a distance-based method that constructs an unrooted tre
 
 ## Why not simply join the closest pair?
 
-Two taxa can have a small observed distance because both are close to the center of the tree, not because they are true neighbors. NJ corrects for this by considering each taxon's total distance from all other taxa.
+The pair of taxa with the smallest evolutionary distance are not necessarily each other’s closest relatives. Their distance may be small because both are relatively slowly evolving. NJ corrects for this by considering each taxon's total distance from all other taxa.
 
 For $n$ current clusters, define
 
