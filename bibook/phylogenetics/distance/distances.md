@@ -5,7 +5,7 @@ authors:
 
 # Distance-based Methods
 
-Phylogenertic tree inference methods can be broadly divided into distance-based and character-based methods. Distance-based methods summarize each pair of aligned sequences by a single number. The simplest number is the observed proportion of sites that differ. More advanced evolutionary models account for that multiple changes can occur at the same site.
+Phylogenetic tree inference methods can be broadly divided into distance-based and character-based methods. Distance-based methods summarize each pair of aligned sequences by a single number. The simplest number is the observed proportion of sites that differ. More advanced evolutionary models account for the fact that multiple changes can occur at the same site.
 
 ## The p-distance
 

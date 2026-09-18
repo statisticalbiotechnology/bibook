@@ -42,5 +42,14 @@ Parsimony is intuitive, uses site-specific information and does not require an e
 A serious failure mode is **long-branch attraction**: rapidly evolving lineages may independently acquire similar states and be grouped together even though they are not closest relatives. Better taxon sampling and model-based methods can reduce this problem.
 
 ```{exercise}
-For the four taxa A,B,C,D with the following character states of two nucleotides: A=A,A, B=G,G, C=A,T and D=T,G, determine which of the three four-taxon topologies has the smallest parsimony score for these sites. Draw one optimal assignment of ancestral states.
+Four taxa, S1–S4, have the following states at three aligned sites:
+
+| Taxon | Site 1 | Site 2 | Site 3 |
+|---|---|---|---|
+| S1 | A | A | C |
+| S2 | A | G | C |
+| S3 | G | A | T |
+| S4 | G | G | T |
+
+Calculate the parsimony score of each site on each of the three unrooted topologies `((S1,S2),(S3,S4))`, `((S1,S3),(S2,S4))` and `((S1,S4),(S2,S3))`. Which topology has the smallest total score? Which site disagrees with it? Draw one optimal assignment of ancestral states for the best tree.
 ```

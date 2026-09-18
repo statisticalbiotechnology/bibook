@@ -43,7 +43,7 @@ $$
 \delta(i,u)=\frac{1}{2}d(i,j)+\frac{r_i-r_j}{2(n-2)},
 $$
 
-and $δ(j,u)=d(i,j)-δ(i,u)$.
+and $\delta(j,u)=d(i,j)-\delta(i,u)$.
 
 ## UPGMA and NJ compared
 

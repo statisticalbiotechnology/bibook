@@ -9,9 +9,9 @@ Phylogenetics uses heritable differences among organisms or genes to infer their
 
 ## Molecular evolution and speciation
 
-First a few words about evolution. A population is a group of organisms of the same species occupying a particular space at a particular time (although there is some variation to the definition). Mutations continually introduce new variants (mainly substitutions, but also deletions, insertions and structural variants) into a population. **Natural selection** changes the frequencies of variants that affect reproductive success, while **genetic drift** changes frequencies by chance, especially in small populations. A new variant may disappear or become **fixed**, meaning that it eventually occurs in every member of the population.
+First a few words about evolution. A population is a group of organisms of the same species occupying a particular space at a particular time (although there is some variation to the definition). Mutations continually introduce new variants (mainly point mutations, but also deletions, insertions and structural variants) into a population. **Natural selection** changes the frequencies of variants that affect reproductive success, while **genetic drift** changes frequencies by chance, especially in small populations. A new variant may disappear or become **fixed**, meaning that it eventually occurs in every member of the population.
 
-When gene flow between two populations is reduced, mutations that arise may become fixed independently in each population. The populations consequently accumulate different substitutions. Selection can promote divergence when the populations experience different environments, while drift can produce divergence even without an adaptive difference. If reproductive isolation develops (the populations cannot cross breed and produce reproductive offspring), the populations form separate species.
+When gene flow between two populations is reduced, mutations that arise may become fixed independently in each population. The populations consequently accumulate different substitutions. Selection can promote divergence when the populations experience different environments, while drift can produce divergence even without an adaptive difference. If reproductive isolation develops (the populations can no longer interbreed and produce fertile offspring), the populations form separate species.
 
 Descendant species inherit most of their DNA from their common ancestral population. Shared and differing characters in modern sequences therefore contain an incomplete signal of their shared history. Phylogenetic methods use this signal to infer where evolutionary lineages diverged.
 
@@ -20,12 +20,12 @@ A mutation is a change in a DNA molecule. A substitution is a mutation that has 
 ```
 
 ## Molecular clocks
-The molecular clock hypothesis states that substitutions accumulate at an approximately constant rate. Thus sequence distance can provide information about divergence time when a rate is known. The rate can be calibrated using fossils, dated geological events, ancient DNA or samples collected at known times. Substitution rates however differ among genes, sites and lineages because of generation time, selection, population size and molecular constraints. A universal molecular clock does therefor not exist.
+The molecular clock hypothesis states that substitutions accumulate at an approximately constant rate. Thus sequence distance can provide information about divergence time when a rate is known. The rate can be calibrated using fossils, dated geological events, ancient DNA or samples collected at known times. Substitution rates, however, differ among genes, sites and lineages because of generation time, selection, population size and molecular constraints. A universal molecular clock therefore does not exist.
 
 
 ## Phylogenies as inferred evolutionary histories
 
-A **phylogeny** describes the evolutionary history of a group of replicating entities, such as species, viruses or genes. We normally observe only sequences from contemporary (today present) taxa. Common ancestors, ancestral sequences and divergence events are inferred from those observations. Phylogenetic divergence is assumed to be bifurcating, with each ancestral lineage splitting into two descendant lineages, making a tree a natural representation of evolutionary history.
+A **phylogeny** describes the evolutionary history of a group of replicating entities, such as species, viruses or genes. We normally observe only sequences from present-day taxa. Common ancestors, ancestral sequences and divergence events are inferred from those observations. Phylogenetic divergence is assumed to be bifurcating, with each ancestral lineage splitting into two descendant lineages, making a tree a natural representation of evolutionary history.
 
 Many different evolutionary histories could potentially explain the same observed data. A tree-building method uses explicit criteria—such as minimum evolutionary change or maximum likelihood—to select or compare hypotheses. The resulting tree should not be treated as certainty: its interpretation depends on the data, evolutionary model and statistical support.
 
@@ -67,11 +67,14 @@ Internal node labels, including support values, may appear after a closing paren
 
 ## Clades
 
-A **clade** contains an ancestor and all of its descendants and is therefore monophyletic. A group assembled from several lineages while excluding some of the descendants of their most recent common ancestor, or some of its descendants, is not a clade. Such groupings may be polyphyletic or paraphyletic.
+A **clade** consists of an ancestor and all of its descendants. Such a group is called **monophyletic**. Groups that are not clades come in two kinds:
+
+- A **paraphyletic** group contains a common ancestor but only some of its descendants. Reptiles excluding birds is a classic example.
+- A **polyphyletic** group collects members from separate lineages without including their most recent common ancestor. Warm-blooded animals, grouping birds with mammals, is an example.
 
 ## Exercises
 
 1. Explain why rotating branches around an internal node does not create a new tree.
 2. In `((A,B),(C,D));`, which pairs are sister taxa? Is A more closely related to C than to D?
-3. Write a Newick tree in which A and C are sister taxa and B is more distant to these.
+3. Write a Newick tree in which A and C are sister taxa and B is more distant from them.
 4. Why is an inferred internal node not normally interpreted as one of the sampled sequences?

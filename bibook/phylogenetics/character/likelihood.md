@@ -58,20 +58,14 @@ P_{ii}\approx 0.9064
 P_{ij}\approx 0.0312.
 $$
 
-Thus, if the ancestral state is A, the descendant is A with probability approximately $0.9064$, while each of C, G and T has probability approximately $0.0312$. Their probabilities sum to one. Notice that $P_{ii}$ is not simply the probability that no substitution occurred (which would be 0.9). A nucleotide can change and later return to its original state. Similarly, an observed difference can result from more than one substitution.
+Thus, if the ancestral state is A, the descendant is A with probability approximately $0.9064$, while each of C, G and T has probability approximately $0.0312$. Their probabilities sum to one. Notice that $P_{ii}$ is not simply the probability that no substitution occurred, which is $e^{-0.1}\approx 0.905$. A nucleotide can change and later return to its original state. Similarly, an observed difference can result from more than one substitution.
 
 As $d$ becomes very large, both $P_{ii}$ and each $P_{ij}$ approach $1/4$. The descendant state then contains almost no information about the ancestral state: repeated substitutions have produced saturation.
 
 ```{note}
-Sequence data generally identify the expected amount of evolutionary change along a branch, not substitution rate and elapsed time separately. In the simple case,
+Sequence data identify the expected amount of change along a branch, $d=\alpha t$, but not the rate $\alpha$ and the time $t$ separately. The same branch length could result from a high rate over a short time or a low rate over a long time.
 
-$$
-d=\alpha t,
-$$
-
-where $\alpha$ is the substitution rate and $t$ is elapsed time. The same branch length $d$ could therefore result from a high rate over a short time or a low rate over a long time.
-
-This ambiguity does not prevent ordinary phylogenetic tree reconstruction. The transition probabilities depend on their product $d$, so branch length can be estimated directly in expected substitutions per site. Estimating evolutionary rates or absolute divergence times separately requires additional assumptions or calibration information, such as a molecular clock, fossils or dated samples.
+This does not prevent tree reconstruction, because the transition probabilities depend only on the product $d$. Branch lengths are therefore estimated directly in expected substitutions per site. Estimating evolutionary rates or absolute divergence times separately requires additional assumptions or calibration information, such as a molecular clock, fossils or dated samples.
 ```
 
 ## Calculating the likelihood of one alignment site
@@ -85,17 +79,7 @@ A -------- T
      d
 ```
 
-Under Jukes-Cantor, the probability of changing from A to the particular nucleotide T is
-
-$$
-P_{AT}(d)=\frac{1}{4}-\frac{1}{4}e^{-4d/3}.
-$$
-
-If we condition on the first nucleotide being A, the probability of observing T at the other end is simply
-
-$$
-P(T\mid A,d)=P_{AT}(d).
-$$
+If we condition on the first nucleotide being A, the probability of observing T at the other end is simply the Jukes-Cantor probability $P_{AT}(d)$ of changing to one particular different nucleotide.
 
 For a phylogenetic site likelihood, however, the A at the first end is also part of the observed data. Its equilibrium probability must therefore be included, which under Jukes-Cantor is 1/4:
 
@@ -226,17 +210,15 @@ where a larger value (one that is less negative) represents a better fit. For ex
 
 ## Comparing trees
 
-For each candidate tree topology, the branch lengths (and other model parameters, if used) are adjusted to find the highest likelihood obtainable for that topology. The optimized likelihoods of the candidate trees are then compared. It would be unfair to compare a tree with well-optimized branch lengths against one with arbitrary branch lengths.
+The branch lengths in the examples above were fixed for illustration. In a real analysis they are unknown model parameters. For each candidate topology, the program adjusts the branch lengths to find the highest likelihood obtainable for that topology. More complex substitution models add further parameters, such as unequal base frequencies, different rates for different types of substitution, or rate variation among sites, and these are optimized in the same way. The optimized likelihoods of the candidate trees are then compared. ML therefore compares trees together with their fitted branch lengths and model parameters, never bare tree shapes.
 
-Calculating the likelihood of one tree is tractable, but the number of possible topologies grows extremely rapidly with the number of taxa. Large analyses therefore use heuristic searches. A program starts with one or more initial trees, for example obtained with Neighbor-Joining, rearranges its branches, optimizes model parameters and retains changes that improve the likelihood. As with a parsimony search, a heuristic likelihood search is not guaranteed to find the global optimum.
+Calculating the likelihood of one tree is tractable, but the number of possible topologies grows extremely rapidly with the number of taxa. Large analyses therefore use heuristic searches. A program starts with one or more initial trees, for example obtained with Neighbor Joining, rearranges its branches, optimizes model parameters and retains changes that improve the likelihood. As with a parsimony search, a heuristic likelihood search is not guaranteed to find the global optimum.
 
 The resulting score is meaningful only relative to the specified data and model. Likelihood scores from different alignments should not normally be compared directly, and the tree with the highest likelihood among those examined is not thereby proven to be the true evolutionary tree.
 
 ## Strengths and limitations
 
-The branch lengths used in the examples above are model parameters. In an actual ML analysis, they are generally not known beforehand: for each proposed topology, the program adjusts the branch lengths to find values that increase the likelihood. The substitution model can also contain additional parameters. More complex models may allow unequal nucleotide frequencies, different rates for different types of substitution, or variation in evolutionary rate among alignment sites. These parameters can likewise be estimated from the data by finding values that give a higher likelihood. ML analysis therefore involves more than comparing tree shapes; it compares trees together with their fitted branch lengths and evolutionary-model parameters.
-
-This model-based framework makes its assumptions explicit and can account for multiple substitutions at the same site. It uses all site patterns rather than reducing an alignment to pairwise distances, and it sums over uncertain ancestral states rather than committing to one reconstruction.
+The model-based framework of ML makes its assumptions explicit and can account for multiple substitutions at the same site. It uses all site patterns rather than reducing an alignment to pairwise distances, and it sums over uncertain ancestral states rather than committing to one reconstruction.
 
 These advantages do not make the method assumption-free. A poor alignment, an inappropriate substitution model, insufficient taxon sampling or a failed heuristic search can bias the result. Standard models also simplify biological evolution—for example, they commonly assume that sites are independent even though RNA structure, codons and protein interactions can make their evolution interdependent. Maximum Likelihood is also computationally more demanding than simple distance methods.
 

@@ -57,7 +57,7 @@ If one lineage evolves much faster, UPGMA can cluster by similar observed distan
 
 ## Strengths and limitations
 
-UPGMA is fast, deterministic and easy to inspect. It is appropriate when distances are approximately ultrametric, and it is widely useful as a clustering method. It was popular in the early days of phylogenetics, however, due to its equal-rate assumption it is rarely used today.
+UPGMA is fast, deterministic and easy to inspect. It is appropriate when distances are approximately ultrametric, and it is widely useful as a clustering method. It was popular in the early days of phylogenetics. However, because of its equal-rate assumption, it is rarely used for phylogenetic inference today.
 
 ```{exercise}
 Repeat the first UPGMA step after changing $d(S3,S4)$ from 0.1 to 0.5. Which pair joins first, and at what height? Do not implement the algorithm in code; show the matrix reasoning.
