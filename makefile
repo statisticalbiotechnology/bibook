@@ -12,7 +12,7 @@ PDF_FILE=$(BUILD_DIR)/bibook.pdf
 all: build-book $(PDF_FILE)
 
 imgs:
-	@$(MAKE) -C bibook/msa/img
+	@$(MAKE) -C bibook/alignment/msa/img
 
 # Live preview. --execute is NOT the default for `jupyter book start`, and
 # without it every alignviz figure renders as an empty box.
@@ -22,7 +22,7 @@ serve: imgs
 # Mirror the executable .md chapters as .ipynb, so GitHub renders them and
 # Colab can open them. The .md stays the source of truth; the .ipynb is
 # generated - never edit it by hand.
-NOTEBOOK_PAGES = bibook/pairwise/nw_code bibook/pairwise/needleman bibook/pairwise/waterman bibook/pairwise/semi
+NOTEBOOK_PAGES = bibook/alignment/pairwise/nw_code bibook/alignment/pairwise/needleman bibook/alignment/pairwise/waterman bibook/alignment/pairwise/semi
 
 notebooks:
 	$(CONDA_ACTIVATE) jb
@@ -67,5 +67,4 @@ clean-all:
 	cd $(BOOK_DIR) && jupyter book clean && rm -rf exports/
 
 .PHONY: all serve notebooks check-notebooks clean clean-all
-
 

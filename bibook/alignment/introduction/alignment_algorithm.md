@@ -13,7 +13,7 @@ Aligning sequences involves comparing each character of one sequence with every 
 A matrix for sequence alignment is essentially a grid. Each cell in this grid represents a comparison point between a character from one sequence and another from the second sequence. Each cell of the matrix corresponds to the characters in the two sequences being aligned. And a path from the top left cell to the bottom right cell of the matrix represents a global alignment.
 
 
-```{figure} ./img/movement.png
+```{figure} ../pairwise/img/movement.png
 ---
 name: fig-movement
 width: 50%
@@ -21,9 +21,9 @@ alt: One step of an alignment
 ---
 A step in the path representing an alignment.
 
-If your alignment is in position $a_i,b_j$ of two sequences $\mathbf{a}=(a_1,\ldots,a_N)$ and $\mathbf{b}=(b_1,\ldots,b_M)$ then the next step in the alignment is either a <span style="color:green">match/mismatch</span> between $a_{i+1},b_{j+1}$ (diagonal movement), a <span style="color:magenta">delete</span> $a_{i+1},-$, (a vertical movement), or an <span style="color:orange">insert</span> $-,b_{j+1}$, (a horizontal movement).
-
 ```
+
+If your alignment is in position $a_i,b_j$ of two sequences $\mathbf{a}=(a_1,\ldots,a_N)$ and $\mathbf{b}=(b_1,\ldots,b_M)$ then the next step in the alignment is either a <span style="color:green">match/mismatch</span> between $a_{i+1},b_{j+1}$ (diagonal movement), a <span style="color:magenta">delete</span> $a_{i+1},-$, (a vertical movement), or an <span style="color:orange">insert</span> $-,b_{j+1}$, (a horizontal movement).
 
 ### Alignments as paths between the cells
 
@@ -34,7 +34,7 @@ The path we follow tells us how the sequences should be aligned. A move diagonal
 
 An example of some matrix representations of an alignment is found in {numref}`fig-matrix-representation`.
 
-```{figure} ./img/matrix_representation.png
+```{figure} ../pairwise/img/matrix_representation.png
 ---
 name: fig-matrix-representation
 width: 50%
@@ -42,14 +42,14 @@ alt: Matrix representation of three alignments
 ---
 Matrix representation of three full length alignments of `ACGTACT` and `ACTACGT`, as well as one partial alignment of the same sequences.
 
+```
+
 The path of Alignment 1 is given in red, Alignment 2 in green, and Alignment 3 in blue. We also included a partial (local) alignment, Alignment 4 in orange.
 
 | Alignment 1 (red) | Alignment 2 (green) | Alignment 3 (blue) | Alignment 4 (orange)
 | :---------- | :---------- | :---------- | :---------- |
 | `---ACGTACT`  | `ACGTAC-T`    | `ACGTACT----` | `ACG` |
 | `ACTACGT---`  | `AC-TACGT`    | `----ACTACGT` | `ACG` |
-
-```
 
 The matrix representation of alignments and the traceback process are not merely computational techniques; they are integral to understanding the relationships between biological sequences. By breaking down the alignment process into a series of quantifiable steps, matrices allow us to systematically explore the vast space of alignment possibilities, leading us to the optimal alignment that best reflects the evolutionary or functional relationship between the sequences involved.
 
@@ -62,7 +62,7 @@ The matrix representation of alignments and the traceback process are not merely
 
 * Which alignment does the following path represent?
 
-```{figure} ./img/matrix_representation_exer.png
+```{figure} ../pairwise/img/matrix_representation_exer.png
 ---
 name: fig-matrix-representation-exer
 width: 50%
