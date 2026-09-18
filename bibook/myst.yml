@@ -12,9 +12,11 @@ project:
       url: https://mybinder.org
       ref: main
   numbering:
-    title: true
-    heading_1:
-      enabled: false
+    # Chapters sit one level below a part page, so they number as 1.1, 1.2, ...
+    # The part pages override this with offset 0 in their own frontmatter.
+    title:
+      enabled: true
+      offset: 1
   bibliography:
     - references.bib
   exports:
@@ -25,7 +27,7 @@ project:
         - name: LUKAS KÄLL \& ANDERS ANDERSSON
   toc:
     - file: intro.md
-    - title: Sequence alignment
+    - file: alignment/index.md
       children:
         - title: Introduction to Alignments
           children:
@@ -54,7 +56,7 @@ project:
           children:
             - file: alignment/retrieval/blast.md
             - file: alignment/retrieval/blast_code.ipynb
-    - title: Phylogenetics
+    - file: phylogenetics/index.md
       children:
         - title: Introduction to Phylogenetics
           children:
