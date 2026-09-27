@@ -66,6 +66,8 @@ As $d$ becomes very large, both $P_{ii}$ and each $P_{ij}$ approach $1/4$. The d
 Sequence data identify the expected amount of change along a branch, $d=\alpha t$, but not the rate $\alpha$ and the time $t$ separately. The same branch length could result from a high rate over a short time or a low rate over a long time.
 
 This does not prevent tree reconstruction, because the transition probabilities depend only on the product $d$. Branch lengths are therefore estimated directly in expected substitutions per site. Estimating evolutionary rates or absolute divergence times separately requires additional assumptions or calibration information, such as a molecular clock, fossils or dated samples.
+
+Note also that transition probabilities here define the chance that one character state changes into another, not of specifically changing from one purine to another or from one pyrimidine to another.
 ```
 
 ## Calculating the likelihood of one alignment site
