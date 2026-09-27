@@ -9,18 +9,18 @@ Neighbor Joining (NJ) is a distance-based method that constructs an unrooted tre
 
 ## Why not simply join the closest pair?
 
-The pair of taxa with the smallest evolutionary distance are not necessarily each other’s closest relatives. Their distance may be small because both are relatively slowly evolving. NJ corrects for this by considering each taxon's total distance from all other taxa.
+The pair of taxa with the smallest evolutionary distance are not necessarily each other’s closest relatives. Their distance may be small because both are relatively slowly evolving. NJ corrects for this by considering each taxon's net distance from all other taxa.
 
-For $n$ current clusters, define
-
-$$
-r_i=\sum_k d(i,k)
-$$
-
-and the joining criterion
+For $n$ current clusters, define a cluster's net distance to the other clusters as
 
 $$
-Q(i,j)=(n-2)d(i,j)-r_i-r_j.
+r_i=\frac{\sum_k d(i,k)}{n-2}
+$$
+
+and the joining criterion ('transition distance')
+
+$$
+Q(i,j)=d(i,j)-r_i-r_j.
 $$
 
 The pair with the smallest $Q$ value is joined. This favors pairs that are close to each other relative to their average divergence from the remaining taxa.
@@ -35,15 +35,13 @@ The pair with the smallest $Q$ value is joined. This favors pairs that are close
 
    $$d(u,k)=\frac{d(i,k)+d(j,k)-d(i,j)}{2}.$$
 
-6. Repeat until the tree is complete.
+6. Repeat (2-5) until the tree is complete.
 
 For a selected pair $i,j$, the branch from $i$ to $u$ is
 
 $$
-\delta(i,u)=\frac{1}{2}d(i,j)+\frac{r_i-r_j}{2(n-2)},
+\delta(i,u)=\frac{d(i,j)+r_i-r_j}{2},
 $$
-
-and $\delta(j,u)=d(i,j)-\delta(i,u)$.
 
 ## UPGMA and NJ compared
 
